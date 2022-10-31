@@ -13,22 +13,21 @@ connections=environment.apiUrl.categories;
    }
 
    getCategories(): Observable<Category[]> {
-    //get metodu Get Http istediğini hazırlıyor.
     return this.http.get<Category[]>(this.connections);
   }
 
-  add(category: Category): Observable<Category> {
+  addCategory(category: Category): Observable<Category> {
     return this.http.post<Category>(this.connections, category);
   }
 
-  update(category: Category): Observable<Category> {
+  updateCategory(category: Category): Observable<Category> {
     return this.http.put<Category>(
       `${this.connections}/${category.id}`,
       category
     );
   }
 
-  delete(id: number): Observable<void> {
+  deleteCategory(id: number): Observable<void> {
     return this.http.delete<void>(`${this.connections}/${id}`);
   }
 }
