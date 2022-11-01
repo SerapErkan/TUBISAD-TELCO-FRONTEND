@@ -1,0 +1,156 @@
+<div class="container">
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">#Id</th>
+        <th scope="col">Category Name</th>
+        <th scope="col">Category Description</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="categories">
+      <ng-template ngFor let-item [ngForOf]="categories">
+        <tr>
+          <th scope="row">{{ item.id }}</th>
+          <td>{{ item.name }}</td>
+          <td>{{ item.description }}</td>
+          <td>
+            <button
+              class="btn btn-danger"
+              (click)="deleteCategoriesById(item.id)"
+            >
+              x
+            </button>
+            <button class="btn btn-primary"(click)="updateCategory(item)">Edit</button>
+          </td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </table>
+</div>
+
+<br />
+<br />
+<br />
+<!-- Reactive Form -->
+<!-- // YENİ EKLE  -->
+
+<div class="container">
+  <form
+    class="br-add"
+    [formGroup]="categoryAddForm"
+  (submit)="addCategoryById()"
+  >
+    <div class="row">
+      <div class="col">Form-Add</div>
+      <div class="col">
+        <input
+          placeholder="CategoryName"
+          type="text"
+          class="form-control"
+          formControlName="name"
+          [(ngModel)]="categoryName"
+        />
+        <ng-container
+          *ngIf="
+            this.categoryAddForm.get('name')?.dirty &&
+            this.categoryAddForm.get('name')?.touched &&
+            this.categoryAddForm.get('name')?.errors
+          "
+        >
+          <div
+            class="help is-danger"
+            *ngIf="this.categoryAddForm.get('name')?.errors?.['required']"
+          >
+            *zorunlu alan
+          </div>
+          <div
+            class="help is-danger"
+            *ngIf="this.categoryAddForm.get('name')?.errors?.['minlength']"
+          >
+            Category Name
+            {{this.categoryAddForm.get('name')?.errors?.['minlength']?.['actualLength']}}
+            Category içermektedir ,minumum
+            {{this.categoryAddForm.get('name')?.errors?.['minlength']?.['requiredLength']}}
+            karakter olmalı
+          </div>
+        </ng-container>
+      </div>
+      <div class="col">
+        <input
+          placeholder="CategoryDescription"
+          type="text"
+          class="form-control"
+          formControlName="description"
+          [(ngModel)]="categoryDescription"
+        />
+        <ng-container
+          *ngIf="
+            this.categoryAddForm.get('description')?.dirty &&
+            this.categoryAddForm.get('description')?.touched &&
+            this.categoryAddForm.get('description')?.errors
+          "
+        >
+          <div
+            class="help is-danger"
+            *ngIf="this.categoryAddForm.get('description')?.errors?.['required']"
+          >
+            *zorunlu alan
+          </div>
+          <div
+            class="help is-danger"
+            *ngIf="this.categoryAddForm.get('description')?.errors?.['minlength']"
+          >
+            Category Description
+            {{this.categoryAddForm.get('description')?.errors?.['minlength']?.['actualLength']}}
+            Category Description ,minumum
+            {{this.categoryAddForm.get('description')?.errors?.['minlength']?.['requiredLength']}}
+            karakter olmalı
+          </div>
+        </ng-container>
+      </div>
+      <div class="col">
+
+        <button *ngIf="!isEdited" 
+          class="button is-primary is-primary"
+          [disabled]="categoryAddForm.invalid"
+          type="submit"
+        >
+        ADD
+        </button>
+
+        <button *ngIf="isEdited" 
+        class="button is-primary is-primary"
+        [disabled]="categoryAddForm.invalid"
+        type="submit"
+      >
+   EDİT
+      </button>
+        
+      </div>
+    </div>
+  </form>
+</div>
+
+<br />
+<br />
+
+<!-- delete-->
+<div class="container br-add">
+  <div class="row">
+    <div class="col-3">
+      <h6>ID: {{ categoryIdToDelete }}</h6>
+    </div>
+    <div class="col">
+      <input type="text" placeholder="id" [(ngModel)]="categoryIdToDelete" />
+    </div>
+    <div class="col">
+      <button class="btn btn-danger" (click)="deleteCategories()">Sil</button>
+    </div>
+  </div>
+</div>
+
+
+
+<br>
+<br>
+

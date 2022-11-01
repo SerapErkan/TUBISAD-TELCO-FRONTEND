@@ -27,8 +27,7 @@ export class CategoriesComponent implements OnInit {
 
   categoryDescription:string="";
   categoryName:string="";
-  categoryId:any;
-
+  categoryId:number=0;
   constructor(
     private categoriesService: CategoriesService,
     private formBuilder: FormBuilder
@@ -42,8 +41,18 @@ export class CategoriesComponent implements OnInit {
 AddForm(){
 
     this.categoryAddForm = this.formBuilder.group({
-      name: ['', Validators.required,Validators.minLength(5),Validators.maxLength(20)],
-      description: ['', [Validators.required, Validators.minLength(5),Validators.maxLength(20)]],
+      name: new FormControl(null,
+        [
+          Validators.required,
+          Validators.minLength(5),
+        ]),
+        description: new FormControl(null,
+          [
+            Validators.required,
+            Validators.minLength(5),
+            Validators.maxLength(20),
+          ]),
+   
     });
   }
 
@@ -53,18 +62,11 @@ AddForm(){
     });
   }
 
-//add
   addCategoryById(): void {
-
-    if (this.categoryAddForm.invalid) {
-      this.error = 'Form is invalid';
-      return;
-    }
 
     const category: Category = {
       ...this.categoryAddForm.value,
     };
-
     this.categoriesService.addCategory(category).subscribe({
       next: (response) => {
         console.info(`Category(${response.id}) has added.`);
@@ -83,50 +85,64 @@ AddForm(){
   }
 
 
-//delete
-  deleteCategoriesById(id?:number) {
-    if(id !== null){
-    this.categoryIdToDelete=id!;
-    }
-      this.categoriesService.deleteCategory(this.categoryIdToDelete).subscribe(() => {
-      this.getByCategories()
+
+  deleteCategories() {
+    this.categoriesService.deleteCategory(this.categoryIdToDelete).subscribe(() => {
       this.categoryIdToDelete=0;
+      this.getByCategories();
     });
+    }
 
-     }
+    deleteCategoriesById(id:number) {
+      if(id !== null){
+      this.categoriesService.deleteCategory(id).subscribe(() => {
+        this.getByCategories();
+      });
+    }
+      }
+    
    
-
-  // editCategoryById(id:number): void {
-  //   this.isEdited=true;
-  //   this.categoryId=id;
-  //   let index= this.categories.findIndex(f=>f.id==id)
-  // this.categoryName=this.categories[index].name;
-  // this.categoryDescription=this.categories[index].description;
-  //  }
-
+updateCategory(item:any){
+// console.log(item) //control
+this.categoryDescription=item.description;
+this.categoryName=item.name
+this.categoryId=item.id
+this.isEdited=true;
+}
 
 
-     editCategoryById(id:number): void {
-
-this.categoriesService.getCategories().subscribe({
-  next: (response) => {
-    let index= response.findIndex(f=>f.id==id)
-   this.categoryName=this.categories[index].name;
-   this.categoryDescription=this.categories[index].description;
-  },
-  error: (err) => {
-    console.log(err);
-    this.error = err.statusText;
-  },
-  complete: () => {
-    if (this.error) this.error = '';
-    this.categoryAddForm.reset();
-    this.getByCategories();
-  },
-})
 
 
-     }
+   updateCategoriesById(): void {
+    const category: Category = {
+      id:this.categoryId,
+      ...this.categoryAddForm.value,
+    };
+    this.categoriesService.updateCategory(category).subscribe({
+      next: (res) => {
+        console.info(`Category ${category.id} has updated`);
+        this.isEdited=false;
+      },
+      error: (err) => {
+        console.log(category);
+        console.error(err);
+      },
+      complete: () => {
+        this.isEdited = false;
+        this.categoryAddForm.reset();
+        this.getByCategories();
+      },
+    });
+  }
+    
+
+
+    // showErrors() {
+    //   const { dirty, touched, errors } = this.categoryAddForm
+    //   return dirty && touched && errors;
+    // }
 
    
   }
+
+
