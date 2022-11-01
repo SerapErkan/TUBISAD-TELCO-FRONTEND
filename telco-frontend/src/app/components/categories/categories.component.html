@@ -14,12 +14,7 @@
           <td>{{ item.name }}</td>
           <td>{{ item.description }}</td>
           <td>
-            <button
-              class="btn btn-danger"
-              (click)="deleteCategoriesById(item.id)"
-            >
-              x
-            </button>
+            <button class="btn btn-danger"(click)="deleteCategoriesById(item)">x</button>
             <button class="btn btn-primary"(click)="updateCategory(item)">Edit</button>
           </td>
         </tr>
@@ -28,20 +23,20 @@
   </table>
 </div>
 
-<br />
-<br />
-<br />
-<!-- Reactive Form -->
-<!-- // YENİ EKLE  -->
+<hr>
 
 <div class="container">
-  <form
-    class="br-add"
-    [formGroup]="categoryAddForm"
-  (submit)="addCategoryById()"
-  >
+  <form class="br-add" [formGroup]="categoryAddForm"(submit)="add_edit_CategoryById()">
     <div class="row">
-      <div class="col">Form-Add</div>
+      <div  class="col" >
+        <input
+        placeholder="CategoryId"
+        type="number"
+        class="form-control"
+        formControlName="id"
+        [(ngModel)]="categoryId"  />
+      
+      </div>
       <div class="col">
         <input
           placeholder="CategoryName"
@@ -109,32 +104,22 @@
         </ng-container>
       </div>
       <div class="col">
-
-        <button *ngIf="!isEdited" 
-          class="button is-primary is-primary"
-          [disabled]="categoryAddForm.invalid"
-          type="submit"
-        >
-        ADD
-        </button>
-
-        <button *ngIf="isEdited" 
-        class="button is-primary is-primary"
-        [disabled]="categoryAddForm.invalid"
-        type="submit"
-      >
-   EDİT
-      </button>
+      <!-- <button *ngIf="isDeleted" class="button is-primary"[disabled]="categoryAddForm.invalid || isEdited "type="submit">DELETED</button>
+      <button *ngIf="isEdited" class="button is-primary" [disabled]="categoryAddForm.invalid "type="submit">EDİT</button>
+      <button *ngIf="isAdded" class="button is-primary"[disabled]="categoryAddForm.invalid || isEdited ||isDeleted " type="submit">ADD</button> -->
         
       </div>
     </div>
   </form>
 </div>
 
-<br />
-<br />
 
-<!-- delete-->
+
+
+
+
+
+<!-- delete DENEME 
 <div class="container br-add">
   <div class="row">
     <div class="col-3">
@@ -147,10 +132,4 @@
       <button class="btn btn-danger" (click)="deleteCategories()">Sil</button>
     </div>
   </div>
-</div>
-
-
-
-<br>
-<br>
-
+</div> -->
