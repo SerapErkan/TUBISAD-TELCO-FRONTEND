@@ -73,9 +73,11 @@ export class CategoriesComponent implements OnInit {
   add_edit_CategoryById(): void {
 
     if (this.buttonName === "Edit") {
+
       const category: Category = {
         ...this.categoryAddForm.value,
       };
+
       this.categoriesService.updateCategory(category).subscribe({
         next: (res) => {
         
@@ -143,39 +145,35 @@ export class CategoriesComponent implements OnInit {
   }
     }
   
-  // deleteCategoriesById(id:number) {
-  //   if(id !== null){
-  //     this.isDeleted=true;
-  //   this.categoriesService.deleteCategory(id).subscribe(() => {
-  //     this.getByCategories();
-  //   });
-  // }
-  //   }
+
 
   deleteCategoriesById(item:any) {
+    let find =this.categories.find((category) => category.id === item.id);
+    if(find!==undefined){
     this.categoryDescription = item.description;
     this.categoryName = item.name;
     this.categoryId = item.id; 
     this.buttonName="Delete"
   }
+}
 
   updateCategory(item: any) {
-    this.categoryId = item.id;
-    this.categoryDescription = item.description;
-    this.categoryName = item.name;
-  this.buttonName="Edit"
-
-
+    let find =this.categories.find((category) => category.id === item.id);
+  
+    if(find!==undefined){
+      this.categoryId = item.id;
+      this.categoryDescription = item.description;
+      this.categoryName = item.name;
+      this.buttonName="Edit"
+    }
+    else{
+      this.error="hata";
+      console.log(this.error)
+    }
   }
 
 
-  // showErrors() {
-  //   const { dirty, touched, errors } = this.categoryAddForm
-  //   return dirty && touched && errors;
-  // }
-  
-
-  // id göre sil 
+  // delete by id
   deleteCategories() {
     this.categoriesService.deleteCategory(this.categoryId).subscribe(() => {
       this.categoryId = 0;
@@ -184,12 +182,20 @@ export class CategoriesComponent implements OnInit {
   }
 
 
+  // showErrors() {
+  //   const { dirty, touched, errors } = this.categoryAddForm
+  //   return dirty && touched && errors;
+  // }
+  
+    // deleteCategoriesById(id:number) {
+  //   if(id !== null){
+  //     this.isDeleted=true;
+  //   this.categoriesService.deleteCategory(id).subscribe(() => {
+  //     this.getByCategories();
+  //   });
+  // }
+  //   }
 
-  DelFindCategoryId(id: number) {
-   let find =this.categories.find((category) => category.id === id);
-
-   
-  }
 
 }
 
