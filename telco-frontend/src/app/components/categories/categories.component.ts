@@ -22,14 +22,13 @@ export class CategoriesComponent implements OnInit {
   categoryAddForm!: FormGroup;
   categoryIdToDelete: number = 0;
 
-  isEdited: boolean = false;
-  isAdded: boolean = true;
-  isDeleted: boolean = false;
+ 
 
   categoryDescription: string = "";
   categoryName: string = "";
   categoryId: number = 0;
 
+  buttonName:string="Add";
 
   error: string = '';
   constructor(
@@ -40,7 +39,7 @@ export class CategoriesComponent implements OnInit {
   ngOnInit(): void {
     this.getByCategories();
     this.AddForm();
-    console.log("a:", this.isAdded,   "d:", this.isDeleted,"e:",this.isEdited);
+   
   }
 
   AddForm() {
@@ -73,12 +72,13 @@ export class CategoriesComponent implements OnInit {
 
   add_edit_CategoryById(): void {
 
-    if (this.isEdited === true) {
+    if (this.buttonName === "Edit") {
       const category: Category = {
         ...this.categoryAddForm.value,
       };
       this.categoriesService.updateCategory(category).subscribe({
         next: (res) => {
+        
           console.info(`Category ${category.id} has updated`);
         
         },
@@ -87,15 +87,18 @@ export class CategoriesComponent implements OnInit {
           console.error(err);
         },
         complete: () => {
-          this.isEdited = false;
           this.categoryAddForm.reset();
           this.getByCategories();
+          this.buttonName="Add"
         },
       });
 
-      this.isEdited = false;
+     
+      
+
+    
     }
-    if(this.isDeleted === true){
+    if(this.buttonName === "Delete"){
 
       this.categoriesService.deleteCategory(this.categoryId).subscribe( {
         next: (res) => {
@@ -109,46 +112,37 @@ export class CategoriesComponent implements OnInit {
         complete: () => {
           if (this.error) this.error = '';
           this.categoryAddForm.reset();
-          this.isDeleted=false;
           this.getByCategories();
+          this.buttonName="Add";
         },
+
     });
     
-    this.isDeleted =false;
-
     }
-    if(this.isAdded===true){
-          const category: Category = {
-        ...this.categoryAddForm.value}
-        
-      this.categoriesService.addCategory(category).subscribe({
-        next: (response) => {
-          console.info(`Category(${response.id}) has added.`);
-        },
-        error: (err) => {
-          console.log(err);
 
-          this.error = err.statusText;
-        },
-        complete: () => {
-          if (this.error) this.error = '';
-          this.categoryAddForm.reset();
-          this.getByCategories();
-        },
-      });
-
-      }
-
-
-
-    }
-  
+    if(this.buttonName==="Add"){
+      const category: Category = {
+    ...this.categoryAddForm.value}
     
+  this.categoriesService.addCategory(category).subscribe({
+    next: (response) => {
+      console.info(`Category(${response.id}) has added.`);
+    },
+    error: (err) => {
+      console.log(err);
+
+      this.error = err.statusText;
+    },
+    complete: () => {
+      if (this.error) this.error = '';
+      this.categoryAddForm.reset();
+      this.getByCategories();
+    },
+  });
+
+  }
+    }
   
-
-
- 
-
   // deleteCategoriesById(id:number) {
   //   if(id !== null){
   //     this.isDeleted=true;
@@ -162,16 +156,14 @@ export class CategoriesComponent implements OnInit {
     this.categoryDescription = item.description;
     this.categoryName = item.name;
     this.categoryId = item.id; 
-    this.isDeleted=true;
+    this.buttonName="Delete"
   }
 
   updateCategory(item: any) {
     this.categoryId = item.id;
     this.categoryDescription = item.description;
     this.categoryName = item.name;
-    this.isEdited = true;
-    this.isAdded=false;
-    this.isDeleted=false
+  this.buttonName="Edit"
 
 
   }
@@ -181,7 +173,9 @@ export class CategoriesComponent implements OnInit {
   //   const { dirty, touched, errors } = this.categoryAddForm
   //   return dirty && touched && errors;
   // }
+  
 
+  // id göre sil 
   deleteCategories() {
     this.categoriesService.deleteCategory(this.categoryId).subscribe(() => {
       this.categoryId = 0;
@@ -189,6 +183,13 @@ export class CategoriesComponent implements OnInit {
     });
   }
 
+
+
+  DelFindCategoryId(id: number) {
+   let find =this.categories.find((category) => category.id === id);
+
+   
+  }
 
 }
 
