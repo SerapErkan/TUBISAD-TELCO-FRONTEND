@@ -14,12 +14,15 @@ import {
   IgxBadgeModule 
  } from "igniteui-angular";
 import { ErrorInterceptor } from 'src/libs/services/error.interceptor';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { LoadingService } from 'src/libs';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,7 @@ import { ErrorInterceptor } from 'src/libs/services/error.interceptor';
     IgxBadgeModule 
     
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass:ErrorInterceptor, multi: true }],
+  providers: [LoadingService,{ provide: HTTP_INTERCEPTORS, useClass:ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -4,18 +4,19 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthInterceptor, AuthService } from 'src/libs';
 import { LoginComponent } from './login/login.component';
-import { AuthComponent } from './auth/auth.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   IgxButtonModule,
   IgxIconModule,
   IgxInputGroupModule
 } from "igniteui-angular";
+import { AuthComponent } from './auth.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    AuthComponent
+ AuthComponent
   ],
   imports: [
     CommonModule,

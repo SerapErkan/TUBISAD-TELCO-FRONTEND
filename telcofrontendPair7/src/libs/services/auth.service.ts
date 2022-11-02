@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { TokenUserModel } from '../models/token-user-model';
 import { Observable } from 'rxjs'
 import { Users } from '../models/users';
+import { catchError, tap } from 'rxjs/operators';
+import { UserToken } from '../models/user-token';
 
 
 @Injectable({
@@ -17,12 +18,11 @@ export class AuthService {
   }
 
   signUp(UserModel:Users): Observable<Users> {
-  return  this.http.post<Users>(this.connection.users,UserModel);
-
+  return  this.http.post<UserToken>(this.connection.users,UserModel)
   }
 
-  login(TokenUserModel:TokenUserModel): Observable <TokenUserModel>{
-   return this.http.post<TokenUserModel>(this.connection.auth,TokenUserModel)
+  login(UserModel:Users): Observable <Users>{
+   return this.http.post<Users>(this.connection.auth,UserModel)
   }
   
 

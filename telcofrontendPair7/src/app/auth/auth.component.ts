@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { AuthService, TokenUserModel, Users } from 'src/libs';
+import { AuthService,Users } from 'src/libs';
 
 @Component({
   selector: 'app-auth',
@@ -58,7 +58,7 @@ export class AuthComponent implements OnInit {
   singUpAdd() {
     if (this.isLoginMode) {
 
-      const auth: TokenUserModel = {
+      const auth:Users = {
         ...this.authForm.value
       }
       this.authService.login(auth).subscribe({

@@ -9,7 +9,26 @@ const routes: Routes = [
   {
     path: "service",
     loadChildren: () => import('./service/service.module').then(m => m.ServiceModule)
+  },
+  {
+    path: "product",
+    loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
+  },
+  {
+    path: "customer",
+    loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule)
+  },
+  {
+    path: "roles",
+    loadChildren: () => import('./roles/roles.module').then(m => m.RolesModule)
+  },
+  {
+    path: "category",
+    loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule)
   }
+
+
+
    
   
 

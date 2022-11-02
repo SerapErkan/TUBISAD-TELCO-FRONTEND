@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { ServiceRoutingModule } from './service-routing.module';
-import { ServicesComponent } from './services/services.component';
+
 import { ServicesService } from 'src/libs';
+import { ServicesComponent } from './services.component';
 
 
 

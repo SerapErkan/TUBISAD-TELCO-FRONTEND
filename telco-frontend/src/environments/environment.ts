@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   apiUrl:{
-    categories: 'http://localhost:3000/categories',
-    products:'http://localhost:3000/products'
+    categories: 'http://localhost:5000/categories',
+    products:'http://localhost:5000/products'
 
   }
 };
