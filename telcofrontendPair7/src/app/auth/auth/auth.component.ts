@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {
- FormBuilder,
+  FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
 
-import { AuthService,Users} from 'src/libs';
+import { AuthService, TokenUserModel, Users } from 'src/libs';
 
 @Component({
   selector: 'app-auth',
@@ -22,66 +22,87 @@ export class AuthComponent implements OnInit {
   // error: string="";
 
   authForm!: FormGroup;
-  userName:string="";
-  password:string="";
+
+  userName: string = "";
+  password: string = "";
   error: string = '';
 
-  constructor(    private formBuilder: FormBuilder, private authService:AuthService) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.autForms();
 
-  } 
+  }
 
   onToggleMode() {
     this.isLoginMode = !this.isLoginMode;
   }
 
 
-autForms(){
-  
-  this.authForm = this.formBuilder.group({
-    userName: new FormControl(null,
-      [
-        Validators.required,
-      ]),
-    password: new FormControl(null,
-      [
-        Validators.required,
-        Validators.minLength(5),
-      ])
- 
-  });
-}
+  autForms() {
 
-userAdd(){
-  if(this.isLoginMode){
+    this.authForm = this.formBuilder.group({
+      userName: new FormControl(null,
+        [
+          Validators.required,
+        ]),
+      password: new FormControl(null,
+        [
+          Validators.required,
+          Validators.minLength(3),
+        ])
 
-    console.log("loginn mode ....")
+    });
   }
-  else{
-       const auth:Users = {
- ...this.authForm.value}
 
-this.authService.signUp(auth).subscribe({
-next: (response) => {
-  console.info(`başarılı ${response.userName},${response.password}`);
-},
-error: (err) => {
-  console.log(err);
+  singUpAdd() {
+    if (this.isLoginMode) {
 
-  this.error = err.statusText;
-},
-complete: () => {
-  if (this.error) this.error = '';
-  this.authForm.reset();
-},
-});
+      const auth: TokenUserModel = {
+        ...this.authForm.value
+      }
+      this.authService.login(auth).subscribe({
+        next: (response) => {
+          console.info(`başarılı ${response.userName},${response.password}`, response);
+        },
+        error: (err) => {
+          console.log(err);
 
-}
+          this.error = err.statusText;
+        },
+        complete: () => {
+          if (this.error) this.error = '';
+          this.authForm.reset();
+        },
+      });
+    }
+
+    else {
+      const user: Users = {
+        ...this.authForm.value
+      }
+      this.authService.signUp(user).subscribe({
+        next: (response) => {
+          console.info(`kayıt başarılı ${response.userName},${response.password}`);
+        },
+        error: (err) => {
+          console.log(err);
+
+          this.error = err.statusText;
+        },
+        complete: () => {
+          if (this.error) this.error = '';
+          this.authForm.reset();
+        },
+      });
+    }
+
+  }
 
 
 
 
-}
+
+
+
 }

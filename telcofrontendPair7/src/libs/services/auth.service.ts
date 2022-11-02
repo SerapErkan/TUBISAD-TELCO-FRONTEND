@@ -11,16 +11,20 @@ import { Users } from '../models/users';
 })
 export class AuthService {
 
-  connection = environment.api.Url.users;
+  connection = environment.api.Url
+
   constructor(private http: HttpClient) {
   }
 
-  signUp(TokenUserModel:Users): Observable<Users> {
-  return  this.http.post<Users>(this.connection,TokenUserModel);
+  signUp(UserModel:Users): Observable<Users> {
+  return  this.http.post<Users>(this.connection.users,UserModel);
 
   }
 
-
+  login(TokenUserModel:TokenUserModel): Observable <TokenUserModel>{
+   return this.http.post<TokenUserModel>(this.connection.auth,TokenUserModel)
+  }
+  
 
 
 }

@@ -28,7 +28,7 @@
       <br />
 
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button class="btn btn-primary me-md-2" type="submit" (click)="userAdd()" [disabled]="authForm.invalid">{{isLoginMode ? "Login" :"Register" }} </button>
+        <button class="btn btn-primary me-md-2" type="submit" (click)="singUpAdd()" [disabled]="authForm.invalid">{{isLoginMode ? "Login" :"Register" }} </button>
         <button class="btn btn-primary me-ms-2" type="button" (click)="onToggleMode()">Toggle to {{isLoginMode ? "Register" : "Login" }}</button>
       </div>
     </form>
