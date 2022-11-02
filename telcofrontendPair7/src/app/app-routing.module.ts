@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
   {
@@ -8,23 +9,27 @@ const routes: Routes = [
   },
   {
     path: "service",
-    loadChildren: () => import('./service/service.module').then(m => m.ServiceModule)
+    loadChildren: () => import('./features/service/service.module').then(m => m.ServiceModule)
   },
   {
     path: "product",
-    loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
+    loadChildren: () => import('./features/product/product.module').then(m => m.ProductModule)
   },
   {
     path: "customer",
-    loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule)
+    loadChildren: () => import('./features/customers/customers.module').then(m => m.CustomersModule)
   },
   {
     path: "roles",
-    loadChildren: () => import('./roles/roles.module').then(m => m.RolesModule)
+    loadChildren: () => import('./features/roles/roles.module').then(m => m.RolesModule)
   },
   {
     path: "category",
-    loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule)
+    loadChildren: () => import('./features/categories/categories.module').then(m => m.CategoriesModule)
+  },
+  {
+    path: "**",
+    component:NavbarComponent
   }
 
 
