@@ -19,13 +19,15 @@ export class AuthService {
   }
 
   signUp(UserModel:Users): Observable<Users> {
-  return  this.http.post<UserToken>(this.connection.users,UserModel)
+  return  this.http.post<Users>(this.connection.users,UserModel)
   }
 
   login(UserModel:Users): Observable <LoginResponse>{
    return this.http.post<LoginResponse>(this.connection.auth,UserModel)
   }
-  
+  getusers(): Observable<Users[]> {
+    return this.http.get<Users[]>(this.connection.users);
+  }
 
 
 }

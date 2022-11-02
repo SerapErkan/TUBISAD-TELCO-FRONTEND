@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AuthService,LocalStorageService,Users } from 'src/libs';
+import { AuthService,LocalStorageService,Users, UserToken } from 'src/libs';
 
 @Component({
   selector: 'app-auth',
@@ -17,7 +17,7 @@ import { AuthService,LocalStorageService,Users } from 'src/libs';
 export class AuthComponent implements OnInit {
   [x: string]: any;
 
-
+ users!:Users[];
   isLoginMode: boolean = false;
   // loading: boolean = false;
   // error: string="";
@@ -32,7 +32,14 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
     this.autForms();
+    this.getUser();
 
+  }
+
+  getUser(): void {
+    this.authService.getusers().subscribe((response) => {
+      this.users = response;
+    });
   }
 
   onToggleMode() {
@@ -80,25 +87,37 @@ export class AuthComponent implements OnInit {
     }
 
     else {
+      let find =this.users.find((u) => u.userName === this.userName);
+
+   
+       if(find===undefined){
+
       const user: Users = {
         ...this.authForm.value
       }
+   
+     
       this.authService.signUp(user).subscribe({
         next: (response) => {
           console.info(`kayıt başarılı ${response.userName},${response.password}`);
         },
         error: (err) => {
-          console.log(err);
+          console.log(err,);
 
           this.error = err.statusText;
         },
         complete: () => {
-          if (this.error) this.error = '';
+          if (this.error) this.error = "";
+          console.log(this.error)
           this.authForm.reset();
         },
       });
     }
+    else{
+      this.error ="userName cannot be used"
+      console.log(this.error);
+    }
  
   }
-
+  }
 }
