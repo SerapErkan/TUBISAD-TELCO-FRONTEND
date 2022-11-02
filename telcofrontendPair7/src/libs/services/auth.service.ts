@@ -5,6 +5,7 @@ import { Observable } from 'rxjs'
 import { Users } from '../models/users';
 import { catchError, tap } from 'rxjs/operators';
 import { UserToken } from '../models/user-token';
+import { LoginResponse } from '../models/login-response';
 
 
 @Injectable({
@@ -21,8 +22,8 @@ export class AuthService {
   return  this.http.post<UserToken>(this.connection.users,UserModel)
   }
 
-  login(UserModel:Users): Observable <Users>{
-   return this.http.post<Users>(this.connection.auth,UserModel)
+  login(UserModel:Users): Observable <LoginResponse>{
+   return this.http.post<LoginResponse>(this.connection.auth,UserModel)
   }
   
 

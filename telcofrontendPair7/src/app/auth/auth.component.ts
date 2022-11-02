@@ -5,8 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
-import { AuthService,Users } from 'src/libs';
+import { AuthService,LocalStorageService,Users } from 'src/libs';
 
 @Component({
   selector: 'app-auth',
@@ -27,7 +28,7 @@ export class AuthComponent implements OnInit {
   password: string = "";
   error: string = '';
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private localStorageService: LocalStorageService, private router: Router) { }
 
   ngOnInit(): void {
     this.autForms();
@@ -63,11 +64,12 @@ export class AuthComponent implements OnInit {
       }
       this.authService.login(auth).subscribe({
         next: (response) => {
-          console.info(`başarılı ${response.userName},${response.password}`, response);
+          console.info(`başarılı`, response);
+          this.localStorageService.setToken(response.access_token)
+          this.router.navigate(['/auth/login']);   
         },
         error: (err) => {
           console.log(err);
-
           this.error = err.statusText;
         },
         complete: () => {
@@ -96,13 +98,7 @@ export class AuthComponent implements OnInit {
         },
       });
     }
-
+ 
   }
-
-
-
-
-
-
 
 }
