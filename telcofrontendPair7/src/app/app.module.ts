@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import{ HttpClientModule}from '@angular/common/http';
+import{ HttpClientModule,HTTP_INTERCEPTORS}from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { 
 	IgxIconModule,
@@ -13,6 +13,7 @@ import {
 	IgxButtonModule,
   IgxBadgeModule 
  } from "igniteui-angular";
+import { ErrorInterceptor } from 'src/libs/services/error.interceptor';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import {
     IgxBadgeModule 
     
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass:ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
