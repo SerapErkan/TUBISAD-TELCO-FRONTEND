@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'src/libs/guards/auth.guard';
 import { ServicesComponent } from './features/service/services.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -12,7 +13,8 @@ const routes: Routes = [
   },
   {
     path: "service",
-    loadChildren: () => import('./features/service/service.module').then(m => m.ServiceModule)
+    loadChildren: () => import('./features/service/service.module').then(m => m.ServiceModule),
+  
   },
   {
     path: "product",

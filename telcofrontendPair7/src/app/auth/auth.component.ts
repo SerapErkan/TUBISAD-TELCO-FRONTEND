@@ -73,7 +73,7 @@ export class AuthComponent implements OnInit {
         next: (response) => {
           console.info(`başarılı`, response);
           this.localStorageService.setToken(response.access_token)
-          this.router.navigate(['/auth/login']);   
+          this.router.navigate(['auth/login']);   
         },
         error: (err) => {
           console.log(err);
