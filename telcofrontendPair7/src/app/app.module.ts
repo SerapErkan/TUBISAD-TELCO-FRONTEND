@@ -21,6 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './home/home.component';
 import { LoginService } from 'src/libs';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { LoginService } from 'src/libs';
     SpinnerComponent,
     NotFoundComponent,
     HomeComponent,
+
   ],
   imports: [
     BrowserModule,

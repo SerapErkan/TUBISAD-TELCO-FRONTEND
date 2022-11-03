@@ -4,15 +4,15 @@
   <igx-navbar  title="Telco-frontend-Pair7">
     <igx-navbar-action>
       <button igxButton="icon">
-        <igx-icon>menu</igx-icon>
+        <igx-icon *ngIf="loggedin()">menu</igx-icon>
       </button>
     </igx-navbar-action>
 
-    <!-- <h6 routerLink="/services">Service</h6>  // anasayfa--> 
-    <h6 routerLink="/products">Product</h6>
-    <h6 routerLink="/categories">Category</h6>
-    <h6 routerLink="/customers">Customer</h6>
-    <h6 routerLink="/roles">Role</h6>
+
+    <h6 *ngIf="loggedin()"routerLink="/products">Product</h6>
+    <h6 *ngIf="loggedin()"routerLink="/categories">Category</h6>
+    <h6 *ngIf="loggedin()"routerLink="/customers">Customer</h6>
+    <h6 *ngIf="loggedin()"routerLink="/roles">Role</h6>
 
     <h6 *ngIf="loggedin()" routerLink="/services" >Service</h6>
 

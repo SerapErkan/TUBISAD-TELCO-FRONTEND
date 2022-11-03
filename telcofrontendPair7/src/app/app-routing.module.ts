@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/libs/guards/auth.guard';
 import { LoginGuard } from 'src/libs/guards/login.guard';
@@ -9,11 +9,18 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
+
   {
-    
     path: "",
-    component:HomeComponent
+    component: HomeComponent,
+
   },
+  {
+    path: "home",
+    component: HomeComponent,
+
+  },
+
   {
 
     path: "auth",
@@ -24,12 +31,12 @@ const routes: Routes = [
 
     path: "services",
     loadChildren: () => import('./features/service/service.module').then(m => m.ServiceModule)
-    ,canActivate:[LoginGuard]
+    , canActivate: [AuthGuard]
   },
   {
-    path: "",
+    path: "service",
     loadChildren: () => import('./features/service/service.module').then(m => m.ServiceModule),
-  
+
   },
   {
     path: "products",
@@ -48,14 +55,14 @@ const routes: Routes = [
     loadChildren: () => import('./features/categories/categories.module').then(m => m.CategoriesModule)
   },
   {
-    path:"**",
-    component:NotFoundComponent
+    path: "**",
+    component: NotFoundComponent
   }
 
 
 
-   
-  
+
+
 
 ];
 

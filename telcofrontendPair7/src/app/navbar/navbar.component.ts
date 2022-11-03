@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService, LocalStorageService, LoginService } from 'src/libs';
+import {  LocalStorageService} from 'src/libs';
 
 @Component({
   selector: 'app-navbar',
@@ -26,7 +26,7 @@ ngOnInit(): void {
    this.local.logut();
     this.isAuthenticated=false;
     console.log("token silindi")
-    this.toastr.success("Token Deleted")
+    this.toastr.warning("Token Deleted")
   }
 
 
