@@ -15,7 +15,7 @@ import {
  } from "igniteui-angular";
 import { ErrorInterceptor } from 'src/libs/services/error.interceptor';
 import { SpinnerComponent } from './spinner/spinner.component';
-import { LoadingService } from 'src/libs';
+import { LoadingInterceptor, LoadingService } from 'src/libs';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -50,7 +50,7 @@ import { ToastrModule } from 'ngx-toastr';
       })// ToastrModule added
     
   ],
-  providers: [LoadingService,{ provide: HTTP_INTERCEPTORS, useClass:ErrorInterceptor, multi: true }],
+  providers: [LoadingService,{ provide: HTTP_INTERCEPTORS, useClass:LoadingInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
