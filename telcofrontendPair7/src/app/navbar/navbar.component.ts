@@ -9,31 +9,26 @@ import { AuthService, LocalStorageService, LoginService } from 'src/libs';
 })
 export class NavbarComponent implements OnInit {
   isAuthenticated: boolean =false;
-  constructor(private authService:AuthService,
-    private local:LocalStorageService, private toastr:ToastrService) { 
+  constructor(private local:LocalStorageService, private toastr:ToastrService) { 
 
   }
-  token!:any
+  
+  token:any=this.local.getToken();
  
 ngOnInit(): void {
-console.log(this.token)
   }
 
-  onToggleMode(){
-  
-    if(this.token!==null){
-      this.isAuthenticated=true;
-    }
-    else{
-      console.log("token yok")
-    }
+  loggedin(){
+    return this.local.getToken();
   }
-
+ 
   onLogut() {
-    this.authService.logut()
+   this.local.logut();
     this.isAuthenticated=false;
     console.log("token silindi")
     this.toastr.success("Token Deleted")
   }
+
+
 
 }

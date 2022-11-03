@@ -16,14 +16,8 @@
     <h6 routerLink="/roles">Role</h6>
     <h6 routerLink="/services">Service</h6>
 
-<!--  
-        <button *ngIf="!isAuthenticated"  class="btn btn-primary me-md-2" routerLink="/auth" (click)="onToggleMode()">Login</button>
-        <button  *ngIf="isAuthenticated" class="btn btn-primary me-md-2" (click)="onLogut()">logUt </button>
-         -->
-
-        <!-- <button *ngIf="!isAuthenticated"  class="btn btn-primary me-md-2" routerLink="/auth" (click)="onLogut()">{!isAuthenticated ? 'login':"logUt"}/button>
-        <button  *ngIf="isAuthenticated" class="btn btn-primary me-md-2" (click)="onToggleMode()">logUt </button> -->
-        <button  class="btn btn-primary me-md-2" routerLink="/auth" (click)="onLogut()">{{!isAuthenticated ?'login':"logUt"}}</button>
+        <h6 *ngIf="!loggedin()"  class="btn btn-primary me-md-2" routerLink="/auth">Login</h6>
+        <button *ngIf="loggedin()"  class="btn btn-primary me-md-2" (click)="onLogut()">Logut</button>
 
   </igx-navbar>
 </div>
