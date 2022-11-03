@@ -17,11 +17,9 @@
   
       <!-- LogUt -->
 
-        <button *ngIf="!isAuthenticated" routerLink="/auth" >Login</button>
-        <button *ngIf="isAuthenticated" (click)="onLogout()"> Logout </button>
- 
-    
- 
+        <button *ngIf="!isAuthenticated"  class="btn btn-primary me-md-2" routerLink="/auth" (click)="onToggleMode()">Login</button>
+        <button  *ngIf="isAuthenticated" class="btn btn-primary me-md-2" (click)="onLogut()">logUt </button>
+
   </igx-navbar>
 </div>
 <!-- <igx-icon routerLink="auth">person </igx-icon> -->

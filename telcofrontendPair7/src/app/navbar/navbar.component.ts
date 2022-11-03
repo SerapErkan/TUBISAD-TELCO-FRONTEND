@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/libs';
+import { AuthService, LocalStorageService } from 'src/libs';
 
 @Component({
   selector: 'app-navbar',
@@ -7,18 +7,33 @@ import { AuthService } from 'src/libs';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  isAuthenticated: boolean = false;
-  constructor(private authService:AuthService) { 
+  isAuthenticated: boolean =false;
+  constructor(private authService:AuthService,
+    private local:LocalStorageService) { 
 
   }
+  token!:any
 
   ngOnInit(): void {
-    
+
+this.token=this.local.getToken();
+console.log(this.token)
+this.onToggleMode();
   }
 
-  onLogout() {
-    this.isAuthenticated=!this.isAuthenticated;
+  onToggleMode(){
+    if(this.token!==null){
+      this.isAuthenticated=true;
+    }
+    else{
+      console.log("fonksion çalışmadı")
+    }
+ 
+  }
+  onLogut() {
     this.authService.logout()
+    this.isAuthenticated=false;
+    console.log("merhaba")
   }
 
 }
