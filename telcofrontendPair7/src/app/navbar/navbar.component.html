@@ -13,8 +13,8 @@
     <h6 routerLink="/categories">Category</h6>
     <h6 routerLink="/customers">Customer</h6>
     <h6 routerLink="/roles">Role</h6>
-    <h6 routerLink="/roles">Role</h6>
-    <h6 routerLink="/services">Service</h6>
+
+    <h6 *ngIf="loggedin()" routerLink="/services" >Service</h6>
 
         <h6 *ngIf="!loggedin()"  class="btn btn-primary me-md-2" routerLink="/auth">Login</h6>
         <button *ngIf="loggedin()"  class="btn btn-primary me-md-2" (click)="onLogut()">Logut</button>
