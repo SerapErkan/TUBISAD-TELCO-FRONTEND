@@ -12,16 +12,16 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
-    path: "service",
+    path: "services",
     loadChildren: () => import('./features/service/service.module').then(m => m.ServiceModule),
   
   },
   {
-    path: "product",
+    path: "products",
     loadChildren: () => import('./features/product/product.module').then(m => m.ProductModule)
   },
   {
-    path: "customer",
+    path: "customers",
     loadChildren: () => import('./features/customers/customers.module').then(m => m.CustomersModule)
   },
   {
@@ -29,7 +29,7 @@ const routes: Routes = [
     loadChildren: () => import('./features/roles/roles.module').then(m => m.RolesModule)
   },
   {
-    path: "category",
+    path: "categories",
     loadChildren: () => import('./features/categories/categories.module').then(m => m.CategoriesModule)
   },
   {

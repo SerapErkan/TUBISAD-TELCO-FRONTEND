@@ -9,6 +9,7 @@ import {
 import { finalize, Observable } from 'rxjs';
 import { LoadingService } from '../services/loading.service';
 
+
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
 
@@ -21,7 +22,7 @@ export class LoadingInterceptor implements HttpInterceptor {
       finalize(() => {
         setTimeout(() => {
           this.loadingService.stopLoading();
-        }, 1000);
+        }, 5000);
       })
     );
   }

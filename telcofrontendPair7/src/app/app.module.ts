@@ -18,6 +18,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { LoadingService } from 'src/libs';
 import { NotFoundComponent } from './not-found/not-found.component';
 
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,17 @@ import { NotFoundComponent } from './not-found/not-found.component';
     IgxIconModule,
     IgxNavbarModule,
     IgxButtonModule,  
-    IgxBadgeModule 
+    IgxBadgeModule ,
+
+      //ngx-toastr
+      ToastrModule.forRoot({
+        timeOut:4000,
+        progressBar:true,
+        closeButton:false,
+        progressAnimation:"decreasing",
+        preventDuplicates:true,
+        positionClass:"toast-bottom-left"
+      })// ToastrModule added
     
   ],
   providers: [LoadingService,{ provide: HTTP_INTERCEPTORS, useClass:ErrorInterceptor, multi: true }],

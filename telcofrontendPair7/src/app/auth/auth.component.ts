@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 import { AuthService,LocalStorageService,Users, UserToken } from 'src/libs';
 
 @Component({
@@ -28,7 +28,12 @@ export class AuthComponent implements OnInit {
   password: string = "";
   error: string = '';
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private localStorageService: LocalStorageService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder,
+     private authService: AuthService,
+      private localStorageService: LocalStorageService, 
+      private router: Router,
+      private toastr: ToastrService
+      ) { }
 
   ngOnInit(): void {
     this.autForms();
@@ -72,12 +77,15 @@ export class AuthComponent implements OnInit {
       this.authService.login(auth).subscribe({
         next: (response) => {
           console.info(`başarılı`, response);
+          this.toastr.success("Login successful")
           this.localStorageService.setToken(response.access_token)
           this.router.navigate(['auth/login']);   
+          
         },
         error: (err) => {
           console.log(err);
           this.error = err.statusText;
+          this.toastr.warning("wrong password")
         },
         complete: () => {
           if (this.error) this.error = '';
@@ -100,6 +108,7 @@ export class AuthComponent implements OnInit {
       this.authService.signUp(user).subscribe({
         next: (response) => {
           console.info(`kayıt başarılı ${response.userName},${response.password}`);
+          this.toastr.error("New record created")
         },
         error: (err) => {
           console.log(err,);
@@ -114,7 +123,8 @@ export class AuthComponent implements OnInit {
       });
     }
     else{
-      this.error ="userName cannot be used"
+      this.toastr.error("Username cannot be used")
+      this.error ="userName cannot be used";
       console.log(this.error);
     }
  
