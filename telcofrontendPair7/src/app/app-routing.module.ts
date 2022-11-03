@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/libs/guards/auth.guard';
+import { RolesComponent } from './features/roles/roles.component';
 import { ServicesComponent } from './features/service/services.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
-  {path:'', component:ServicesComponent},
+ 
   {
     path: "auth",
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
-    path: "services",
+    path: "",
     loadChildren: () => import('./features/service/service.module').then(m => m.ServiceModule),
   
   },

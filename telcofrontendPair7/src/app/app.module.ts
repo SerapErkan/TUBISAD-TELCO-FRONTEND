@@ -17,7 +17,6 @@ import { ErrorInterceptor } from 'src/libs/services/error.interceptor';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { LoadingService } from 'src/libs';
 import { NotFoundComponent } from './not-found/not-found.component';
-
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
