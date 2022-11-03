@@ -2,6 +2,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Service, ServicesService } from 'src/libs';
 
 
@@ -17,7 +18,7 @@ export class ServicesComponent implements OnInit {
   serviceAddForm !: FormGroup;
   error: string = '';
 
-  constructor(private servicesService :ServicesService, private formBuilder: FormBuilder) { }
+  constructor(private servicesService :ServicesService, private formBuilder: FormBuilder,private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.getServices();
@@ -48,7 +49,9 @@ update(service: Service){
 addService(service: Service){
     this.servicesService.add(this.service).subscribe({
       next: (response) => {
+        this.toastr.success("Added service")
         console.log(`Service${response} has added`);
+    
       },
       error: (err) => {
         console.log(err);
@@ -63,7 +66,7 @@ addService(service: Service){
 deleteService(id: number){
   
     this.servicesService.delete(id).subscribe(() => {this.getServices()})
-    
+    this.toastr.error("Deleted service")
   }
 updateService(){    
     if (!this.service.id) {
@@ -72,6 +75,7 @@ updateService(){
     this.servicesService.update( this.service.id , this.service).subscribe({
       next: (response) => {
         console.log(`Service${response} has updated`);
+        this.toastr.success("Updated service")
       },
       error: (err) => {
         console.log(err);
