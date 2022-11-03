@@ -18,6 +18,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { LoadingInterceptor, LoadingService } from 'src/libs';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ToastrModule } from 'ngx-toastr';
+import { HomeComponent } from './home/home.component';
+import { LoginService } from 'src/libs';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { ToastrModule } from 'ngx-toastr';
     NavbarComponent,
     SpinnerComponent,
     NotFoundComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,7 @@ import { ToastrModule } from 'ngx-toastr';
       })// ToastrModule added
     
   ],
-  providers: [LoadingService,{ provide: HTTP_INTERCEPTORS, useClass:LoadingInterceptor, multi: true }],
+  providers: [LoginService,LoadingService,{ provide: HTTP_INTERCEPTORS, useClass:LoadingInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

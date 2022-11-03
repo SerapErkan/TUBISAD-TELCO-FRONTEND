@@ -16,3 +16,5 @@ export * from "./services/auth.service"
 export *from "./services/services.service"
 export *from "./services/loading.service"
 export *from "./services/local-storage.service"
+
+export *from "./services/login.service"

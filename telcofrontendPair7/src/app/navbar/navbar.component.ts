@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService, LocalStorageService } from 'src/libs';
+import { AuthService, LocalStorageService, LoginService } from 'src/libs';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +15,6 @@ export class NavbarComponent implements OnInit {
   token!:any
 
   ngOnInit(): void {
-
 this.token=this.local.getToken();
 console.log(this.token)
 this.onToggleMode();

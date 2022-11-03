@@ -13,13 +13,15 @@
     <h6 routerLink="/categories">Category</h6>
     <h6 routerLink="/customers">Customer</h6>
     <h6 routerLink="/roles">Role</h6>
+    <h6 routerLink="/roles">Role</h6>
+    <h6 routerLink="/services">Service</h6>
 
-  
+<!-- 
+  <button (click)="toggleLogin()">Login</button> -->
       <!-- LogUt -->
-
+ 
         <button *ngIf="!isAuthenticated"  class="btn btn-primary me-md-2" routerLink="/auth" (click)="onToggleMode()">Login</button>
         <button  *ngIf="isAuthenticated" class="btn btn-primary me-md-2" (click)="onLogut()">logUt </button>
 
   </igx-navbar>
 </div>
-<!-- <igx-icon routerLink="auth">person </igx-icon> -->
