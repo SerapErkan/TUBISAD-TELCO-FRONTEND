@@ -22,7 +22,7 @@ export class LocalStorageService {
   }
   logut() {
     localStorage.removeItem("token");
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
   
 
