@@ -14,8 +14,14 @@
     <h6 routerLink="/customers">Customer</h6>
     <h6 routerLink="/roles">Role</h6>
 
-    <button igxButton="icon">
-      <igx-icon routerLink="auth">person </igx-icon>
-    </button>
+  
+      <!-- LogUt -->
+
+        <button *ngIf="!isAuthenticated" routerLink="/auth" >Login</button>
+        <button *ngIf="isAuthenticated" (click)="onLogout()"> Logout </button>
+ 
+    
+ 
   </igx-navbar>
 </div>
+<!-- <igx-icon routerLink="auth">person </igx-icon> -->

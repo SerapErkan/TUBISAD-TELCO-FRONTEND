@@ -14,6 +14,9 @@ export class LocalStorageService {
     return localStorage.getItem('token');
   }
   clearToken(){
-    localStorage.removeItem("token");
+    localStorage.removeItem('token');
+  }
+  AllToken(){
+    localStorage.clear();
   }
 }

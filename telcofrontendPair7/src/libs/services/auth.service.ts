@@ -6,7 +6,7 @@ import { Users } from '../models/users';
 import { catchError, tap } from 'rxjs/operators';
 import { UserToken } from '../models/user-token';
 import { LoginResponse } from '../models/login-response';
-
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class AuthService {
 
   connection = environment.api.Url
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private router: Router) {
   }
 
   signUp(UserModel:Users): Observable<Users> {
@@ -28,7 +28,11 @@ export class AuthService {
   getusers(): Observable<Users[]> {
     return this.http.get<Users[]>(this.connection.users);
   }
-
+  logout() {
+   
+    localStorage.removeItem("token");
+    this.router.navigate(['/auth']);
+  }
 
 }
 
