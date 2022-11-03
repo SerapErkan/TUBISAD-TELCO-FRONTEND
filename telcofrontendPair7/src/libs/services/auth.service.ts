@@ -29,7 +29,6 @@ export class AuthService {
     return this.http.get<Users[]>(this.connection.users);
   }
   logout() {
-   
     localStorage.removeItem("token");
     this.router.navigate(['/auth']);
   }

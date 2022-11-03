@@ -14,21 +14,23 @@ export class NavbarComponent implements OnInit {
   }
   token!:any
 
-  ngOnInit(): void {
+ngOnInit(): void {
+
 this.token=this.local.getToken();
 console.log(this.token)
 this.onToggleMode();
   }
 
   onToggleMode(){
+    console.log(this.token);
     if(this.token!==null){
       this.isAuthenticated=true;
     }
     else{
       console.log("fonksion çalışmadı")
     }
- 
   }
+  
   onLogut() {
     this.authService.logout()
     this.isAuthenticated=false;
