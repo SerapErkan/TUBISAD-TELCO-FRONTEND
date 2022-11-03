@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -6,11 +7,15 @@ import { Injectable } from '@angular/core';
 export class LoginService {
 
   isLoggedIn=false;
+  token:any;
+  constructor(private local:LocalStorageService) { }
 
-  constructor() { }
+  login(){
+    this.isLoggedIn=!this.isLoggedIn
+  }
+  
 
-login(){
-  this.isLoggedIn=!this.isLoggedIn
-}
+
+
 
 }

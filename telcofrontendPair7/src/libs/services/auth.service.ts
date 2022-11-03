@@ -28,7 +28,7 @@ export class AuthService {
   getusers(): Observable<Users[]> {
     return this.http.get<Users[]>(this.connection.users);
   }
-  logout() {
+  logut() {
     localStorage.removeItem("token");
     this.router.navigate(['/auth']);
   }

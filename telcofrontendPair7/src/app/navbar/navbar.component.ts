@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService, LocalStorageService, LoginService } from 'src/libs';
 
 @Component({
@@ -9,32 +10,30 @@ import { AuthService, LocalStorageService, LoginService } from 'src/libs';
 export class NavbarComponent implements OnInit {
   isAuthenticated: boolean =false;
   constructor(private authService:AuthService,
-    private local:LocalStorageService) { 
+    private local:LocalStorageService, private toastr:ToastrService) { 
 
   }
   token!:any
-
+ 
 ngOnInit(): void {
-
-this.token=this.local.getToken();
 console.log(this.token)
-this.onToggleMode();
   }
 
   onToggleMode(){
-    console.log(this.token);
+  
     if(this.token!==null){
       this.isAuthenticated=true;
     }
     else{
-      console.log("fonksion çalışmadı")
+      console.log("token yok")
     }
   }
-  
+
   onLogut() {
-    this.authService.logout()
+    this.authService.logut()
     this.isAuthenticated=false;
-    console.log("merhaba")
+    console.log("token silindi")
+    this.toastr.success("Token Deleted")
   }
 
 }

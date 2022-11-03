@@ -21,8 +21,9 @@
         <button  *ngIf="isAuthenticated" class="btn btn-primary me-md-2" (click)="onLogut()">logUt </button>
          -->
 
-        <button *ngIf="!isAuthenticated"  class="btn btn-primary me-md-2" routerLink="/auth" (click)="onLogut()">Login</button>
-        <button  *ngIf="isAuthenticated" class="btn btn-primary me-md-2" (click)="onToggleMode()">logUt </button>
+        <!-- <button *ngIf="!isAuthenticated"  class="btn btn-primary me-md-2" routerLink="/auth" (click)="onLogut()">{!isAuthenticated ? 'login':"logUt"}/button>
+        <button  *ngIf="isAuthenticated" class="btn btn-primary me-md-2" (click)="onToggleMode()">logUt </button> -->
+        <button  class="btn btn-primary me-md-2" routerLink="/auth" (click)="onLogut()">{{!isAuthenticated ?'login':"logUt"}}</button>
 
   </igx-navbar>
 </div>
