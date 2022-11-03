@@ -33,7 +33,7 @@
     </table>
 
 
-  <div class="row">
+  <div *ngIf="isClicked" class="row">
     <div class="col-md-3"*ngIf="service != null"> <input class="form-control form-control-lg" [(ngModel)]="service.name"/></div>
     <div class="col-md-3"*ngIf="service != null">
   

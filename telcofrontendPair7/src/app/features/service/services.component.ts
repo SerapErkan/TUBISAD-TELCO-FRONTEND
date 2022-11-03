@@ -17,6 +17,7 @@ export class ServicesComponent implements OnInit {
   service !: Service;
   serviceAddForm !: FormGroup;
   error: string = '';
+  isClicked: boolean = false;
 
   constructor(private servicesService :ServicesService, private formBuilder: FormBuilder,private toastr:ToastrService) { }
 
@@ -33,9 +34,11 @@ export class ServicesComponent implements OnInit {
   //--------------------------------
 add(){
   this.service = {name: ''};
+  this.isClicked=true;
 }
 update(service: Service){
   this.service = {...service};
+   this.isClicked=true;
 }
 //----------------------------------
   getServices(): void {
@@ -47,6 +50,7 @@ update(service: Service){
   }
 
 addService(service: Service){
+  this.isClicked=false;
     this.servicesService.add(this.service).subscribe({
       next: (response) => {
         this.toastr.success("Added service")
@@ -68,7 +72,8 @@ deleteService(id: number){
     this.servicesService.delete(id).subscribe(() => {this.getServices()})
     this.toastr.error("Deleted service")
   }
-updateService(){    
+updateService(){  
+  this.isClicked=false;  
     if (!this.service.id) {
       return;
     }
