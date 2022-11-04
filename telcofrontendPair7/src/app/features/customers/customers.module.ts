@@ -5,18 +5,22 @@ import { CustomersRoutingModule } from './customers-routing.module';
 import { CustomersComponent } from './customers.component';
 import { CustomersService } from 'src/libs/services/customers.service';
 import { FormsModule } from '@angular/forms';
-import { FilterPipe } from 'src/libs/pipes/filter.pipe';
+
 import { DetailComponent } from './detail/detail.component';
+import { FirtNamePipe, LastNamePipe, CustomerIdPipe } from 'src/libs';
 
 
 @NgModule({
   declarations: [
-    CustomersComponent,FilterPipe, DetailComponent
+    CustomersComponent, DetailComponent,
+    FirtNamePipe,
+    LastNamePipe,
+    CustomerIdPipe
   ],
   imports: [
     CommonModule,
-    CustomersRoutingModule,FormsModule
+    CustomersRoutingModule, FormsModule,
   ],
-  providers:[CustomersService]
+  providers: [CustomersService]
 })
 export class CustomersModule { }

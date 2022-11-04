@@ -16,7 +16,9 @@ export class CustomersComponent implements OnInit {
   corporateCustomers!: CorporateCustomers[];
   individualCustomers!: IndividualCustomers[];
 
-  searchText:string=""
+  searchLastName:string=""
+  searchFirtName:string=""
+  searchId:string=""
 
   constructor(private customersService: CustomersService ) {
    
