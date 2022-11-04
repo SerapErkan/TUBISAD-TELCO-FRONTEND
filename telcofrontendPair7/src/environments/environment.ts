@@ -11,7 +11,8 @@ export const environment = {
 
       services: '${api}/services',
       users: '${api}/users',
-      auth: '${api}/auth/login',
+      
+      auth: '"http://localhost:3000"/auth/login',
 
       customers: {
         customers: '${api}/customers',
