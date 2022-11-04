@@ -11,17 +11,20 @@ import { CustomersService } from 'src/libs/services/customers.service';
 })
 export class CustomersComponent implements OnInit {
 
-  customers: Customer[] = [];
-  corporateCustomers!: CorporateCustomers
-  individualCustomers!: IndividualCustomers
+  customers!: Customer[];
+  corporateCustomers!: CorporateCustomers[];
+  individualCustomers!: IndividualCustomers[];
 
+  searchText:string=""
 
   constructor(private customersService: CustomersService) { }
 
   ngOnInit(): void {
     this.getByCustomers();
+   this.getByIndividualCustomers();
+   this.getByCorporateCustomers()
+    
   }
-
   getByCustomers(): void {
     this.customersService.getCustomer().subscribe((response) => {
       this.customers = response;

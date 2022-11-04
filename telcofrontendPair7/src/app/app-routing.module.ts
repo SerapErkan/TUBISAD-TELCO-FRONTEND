@@ -33,11 +33,7 @@ const routes: Routes = [
     loadChildren: () => import('./features/service/service.module').then(m => m.ServiceModule)
     , canActivate: [AuthGuard]
   },
-  {
-    path: "service",
-    loadChildren: () => import('./features/service/service.module').then(m => m.ServiceModule),
 
-  },
   {
     path: "products",
     loadChildren: () => import('./features/product/product.module').then(m => m.ProductModule)
@@ -45,6 +41,7 @@ const routes: Routes = [
   {
     path: "customers",
     loadChildren: () => import('./features/customers/customers.module').then(m => m.CustomersModule)
+    ,canActivate: [AuthGuard]
   },
   {
     path: "roles",

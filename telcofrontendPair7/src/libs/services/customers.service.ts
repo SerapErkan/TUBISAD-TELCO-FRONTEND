@@ -18,11 +18,11 @@ connections=environment.api
   getCustomer(): Observable<Customer[]> {
     return this.http.get<Customer[]>(this.connections.Url.customers.customers);
   }
-  getIndividualCustomers():Observable<IndividualCustomers>{
-    return this.http.get<IndividualCustomers>(this.connections.Url.customers.individualCustomers)
+  getIndividualCustomers():Observable<IndividualCustomers[]>{
+    return this.http.get<IndividualCustomers[]>(this.connections.Url.customers.individualCustomers)
   }
-  getCorporateCustomers():Observable<CorporateCustomers>{
-   return this.http.get<CorporateCustomers>(this.connections.Url.customers.corporateCustomers)
+  getCorporateCustomers():Observable<CorporateCustomers[]>{
+   return this.http.get<CorporateCustomers[]>(this.connections.Url.customers.corporateCustomers)
   }
 
 }
