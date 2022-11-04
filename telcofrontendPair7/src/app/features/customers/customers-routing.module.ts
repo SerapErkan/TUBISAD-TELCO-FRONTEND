@@ -8,7 +8,7 @@ const routes: Routes = [{
   component: CustomersComponent
 },
 {
-  path: "customerId/:customerId ",
+  path: "details/:customerId ",
   component: DetailComponent
 }
 ,
@@ -16,7 +16,6 @@ const routes: Routes = [{
 //   path:"",
 //   redirectTo:"/customers",
 //   pathMatch:"full"
-
 // }
 ];
 

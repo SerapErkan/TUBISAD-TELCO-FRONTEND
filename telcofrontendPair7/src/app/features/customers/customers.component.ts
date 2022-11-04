@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CorporateCustomers } from 'src/libs/models/corporate-customers';
 import { Customer } from 'src/libs/models/customer';
 import { IndividualCustomers } from 'src/libs/models/individual-customers';
@@ -20,7 +21,7 @@ export class CustomersComponent implements OnInit {
   searchFirtName:string=""
   searchId!:number
 
-  constructor(private customersService: CustomersService ) {
+  constructor(private customersService: CustomersService , private router:Router) {
    
 
    }
@@ -47,6 +48,10 @@ export class CustomersComponent implements OnInit {
       this.corporateCustomers = response;
     });
   }
-
+  
+  showDetails(id: number | undefined){
+    //queryParams
+    this.router.navigate(['/details'],{queryParams: {customerId:id}})
+  }
 
 }
