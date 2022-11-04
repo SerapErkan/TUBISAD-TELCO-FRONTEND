@@ -6,7 +6,7 @@ import { IndividualCustomers } from '../models/individual-customers';
 })
 export class CustomerIdPipe implements PipeTransform {
 
-  transform(value:IndividualCustomers[],customerId:string ): IndividualCustomers[] {
+  transform(value:IndividualCustomers[],customerId:number ): IndividualCustomers[] {
     return value.filter(id => !customerId || id.nationalIdentity?.toString().toLocaleLowerCase().includes(customerId.toString().toLocaleLowerCase()))
   }
 

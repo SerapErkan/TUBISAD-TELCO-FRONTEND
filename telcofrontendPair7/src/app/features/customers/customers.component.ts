@@ -18,7 +18,7 @@ export class CustomersComponent implements OnInit {
 
   searchLastName:string=""
   searchFirtName:string=""
-  searchId:string=""
+  searchId!:number
 
   constructor(private customersService: CustomersService ) {
    

@@ -10,7 +10,7 @@
    
     <div class="col-3"><label for="">SearchLastName</label><input class="form-control form-control-lg" [(ngModel)]="searchLastName" /></div>
     <div class="col-3"><label for="">SearchFirtName</label><input class="form-control form-control-lg" [(ngModel)]="searchFirtName" /></div>
-    <div class="col-3"><label for="">SearchId</label><input class="form-control form-control-lg" [(ngModel)]="searchId" /></div>
+    <div class="col-3"><label for="">SearchNationalIdentity</label><input class="form-control form-control-lg" [(ngModel)]="searchId" /></div>
   </div>
   
 
@@ -31,8 +31,9 @@
           </div>
           <div class="card-body">
             <p class="card-text">
-              {{ item.firstName }}
-              {{ item.lastName }}
+             Customer:{{ item.firstName }}-{{ item.lastName }}
+              NationalIdentity: {{ item.nationalIdentity}}
+              
             </p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
