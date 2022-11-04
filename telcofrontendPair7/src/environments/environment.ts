@@ -4,18 +4,25 @@
 
 export const environment = {
   production: false,
-  
-    api:{
-      Url:{
-        // categories: 'http://localhost:3000/categories',
-        products:'http://localhost:3000/products',
-        services:'http://localhost:3000/services',
-        users:'http://localhost:3000/users',
-        auth: 'http://localhost:3000/auth/login'
-    
+
+  api: {
+    api: "http://localhost:3000",
+    Url: {
+
+      services: '${api}/services',
+      users: '${api}/users',
+      auth: '${api}/auth/login',
+
+      customers: {
+        customers: '${api}/customers',
+        corporateCustomers: '${api}/corporateCustomers',
+        individualCustomers: '${api}/individualCustomers'
+
       }
+
     }
-  
+  }
+
 };
 
 /*
