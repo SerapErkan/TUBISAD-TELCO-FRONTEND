@@ -9,15 +9,15 @@ export const environment = {
     api: "http://localhost:3000",
     Url: {
 
-      services: '${api}/services',
-      users: '${api}/users',
+      services: 'http://localhost:3000/services',
+      users: 'http://localhost:3000/users',
       
-      auth: '"http://localhost:3000"/auth/login',
+      auth: "http://localhost:3000/auth/login",
 
       customers: {
-        customers: '${api}/customers',
-        corporateCustomers: '${api}/corporateCustomers',
-        individualCustomers: '${api}/individualCustomers'
+        customers: 'http://localhost:3000/customers',
+        corporateCustomers: 'http://localhost:3000/corporateCustomers',
+        individualCustomers: 'http://localhost:3000/individualCustomers'
 
       }
 
