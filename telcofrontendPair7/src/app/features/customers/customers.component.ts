@@ -4,6 +4,7 @@ import { Customer } from 'src/libs/models/customer';
 import { IndividualCustomers } from 'src/libs/models/individual-customers';
 import { CustomersService } from 'src/libs/services/customers.service';
 
+
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
@@ -17,12 +18,16 @@ export class CustomersComponent implements OnInit {
 
   searchText:string=""
 
-  constructor(private customersService: CustomersService) { }
+  constructor(private customersService: CustomersService ) {
+   
+
+   }
 
   ngOnInit(): void {
     this.getByCustomers();
    this.getByIndividualCustomers();
    this.getByCorporateCustomers()
+
     
   }
   getByCustomers(): void {
@@ -40,10 +45,6 @@ export class CustomersComponent implements OnInit {
       this.corporateCustomers = response;
     });
   }
-
-
-
-
 
 
 }

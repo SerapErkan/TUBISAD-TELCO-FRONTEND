@@ -1,7 +1,7 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Observable  } from 'rxjs'
+import {Observable, Subscription  } from 'rxjs'
 import { environment } from 'src/environments/environment';
 import { CorporateCustomers } from '../models/corporate-customers';
 import { Customer } from '../models/customer';
@@ -23,6 +23,13 @@ connections=environment.api
   }
   getCorporateCustomers():Observable<CorporateCustomers[]>{
    return this.http.get<CorporateCustomers[]>(this.connections.Url.customers.corporateCustomers)
+  }
+
+
+  //
+  getIndividualCustomersId(customerId:any):Observable<Subscription[]>{
+    const url='${this.connections.Url.customers.subscription}/${customerId}'
+    return this.http.get<Subscription[]>(url);
   }
 
 }

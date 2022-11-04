@@ -2,6 +2,8 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { Subscription } from "rxjs";
+
 export const environment = {
   production: false,
 
@@ -17,7 +19,8 @@ export const environment = {
       customers: {
         customers: 'http://localhost:3000/customers',
         corporateCustomers: 'http://localhost:3000/corporateCustomers',
-        individualCustomers: 'http://localhost:3000/individualCustomers'
+        individualCustomers: 'http://localhost:3000/individualCustomers',
+        subscription:"http://localhost:3000/subscriptions"
 
       }
 
