@@ -10,12 +10,15 @@ import { DetailComponent } from './detail/detail.component';
 import { FirtNamePipe, LastNamePipe, CustomerIdPipe } from 'src/libs';
 
 
+
 @NgModule({
   declarations: [
-    CustomersComponent, DetailComponent,
+    CustomersComponent,
+     DetailComponent,
     FirtNamePipe,
     LastNamePipe,
-    CustomerIdPipe
+    CustomerIdPipe,
+    
   ],
   imports: [
     CommonModule,

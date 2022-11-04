@@ -1,7 +1,7 @@
 export interface Subscriptions {
 
-    id:number,
-    customerId:number,
-    serviceId:number,
-    dateStarted:string
+    id:number;
+    customerId:number;
+    serviceId:number;
+    dateStarted:string;
 }

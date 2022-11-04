@@ -51,7 +51,9 @@ export class CustomersComponent implements OnInit {
   
   showDetails(id: number | undefined){
     //queryParams
-    this.router.navigate(['/details'],{queryParams: {customerId:id}})
+    // this.router.navigate(['customers/details'],{queryParams: {customerId:id}})
+    this.router.navigate(['customers/details', id])
+    
   }
 
 }

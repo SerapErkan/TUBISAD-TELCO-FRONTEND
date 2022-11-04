@@ -27,9 +27,9 @@ connections=environment.api
 
 
   //
-  getIndividualCustomersId(customerId:any):Observable<Subscription[]>{
-    const url='${this.connections.Url.customers.subscription}/${customerId}'
-    return this.http.get<Subscription[]>(url);
+  getIndividualCustomersId(customerId:number):Observable<IndividualCustomers[]>{
+    return this.http.get<IndividualCustomers[]>('http://localhost:3000/subscriptions?custemerId='+ customerId);
   }
 
+  
 }
