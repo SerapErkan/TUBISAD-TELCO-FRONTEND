@@ -25,6 +25,7 @@
   <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <div class="col" *ngFor="let item of individualCustomers |lastName:searchLastName |firtName: searchFirtName |customerId:searchId ">
+     
         <div class="card shadow-sm">
           <div class="card-header py-3 text-bg-primary border-primary">
             <h6 class="my-0 fw-normal">CustomerId :{{ item.customerId }}</h6>
@@ -38,7 +39,7 @@
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <button type="button" (click)="showDetails(item.customerId)" class="btn btn-sm btn-outline-secondary">  
-                  View
+           
                 </button>
           
               </div>

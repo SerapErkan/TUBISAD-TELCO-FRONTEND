@@ -21,6 +21,9 @@ export class CustomersComponent implements OnInit {
   searchFirtName:string=""
   searchId!:number
 
+
+  // subscriptions!:IndividualCustomers[]
+
   constructor(private customersService: CustomersService , private router:Router) {
    
 

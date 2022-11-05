@@ -4,9 +4,9 @@ import { AuthGuard } from 'src/libs/guards/auth.guard';
 import { LoginGuard } from 'src/libs/guards/login.guard';
 import { RolesComponent } from './features/roles/roles.component';
 import { ServicesComponent } from './features/service/services.component';
-import { HomeComponent } from './home/home.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeComponent } from './component/home/home.component';
+import { NavbarComponent } from './component/navbar/navbar.component';
+import { NotFoundComponent } from './component/not-found/not-found.component';
 
 const routes: Routes = [
 

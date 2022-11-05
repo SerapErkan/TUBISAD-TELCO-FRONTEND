@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Input } from '@angular/core';
 import { CustomersService } from 'src/libs';
+import { IndividualCustomers } from 'src/libs/models/individual-customers';
 
 
 @Component({
@@ -9,6 +11,7 @@ import { CustomersService } from 'src/libs';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
+  // @Input() subscriptions!:IndividualCustomers
 
   subscriptions!:any;
   id!:number;
@@ -28,8 +31,10 @@ export class DetailComponent implements OnInit {
   }
 
 
-
-
+ //snapshot
+  // const id: string = route.snapshot.params.id;
+  //   const url: string = route.snapshot.url.join('');
+  //   const user = route.snapshot.data.user;
 
 
 
