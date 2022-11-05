@@ -25,11 +25,12 @@ connections=environment.api
    return this.http.get<CorporateCustomers[]>(this.connections.Url.customers.corporateCustomers)
   }
 
-
   //
-  getIndividualCustomersId(customerId:number):Observable<IndividualCustomers[]>{
-    return this.http.get<IndividualCustomers[]>('http://localhost:3000/subscriptions?custemerId='+ customerId);
+  getIndividualCustomersId(id:number):Observable<IndividualCustomers[]>{
+    return this.http.get<IndividualCustomers[]>('http://localhost:3000/individualCustomers?customerId=' + id)
   }
 
+  // 'http://localhost:3000/individualCustomers?customerId=
+  // individualCustomer/details/:id
   
 }
