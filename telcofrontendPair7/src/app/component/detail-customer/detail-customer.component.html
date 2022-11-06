@@ -1,15 +1,25 @@
- <div class="p-5 mb-4 bg-light rounded-3">
-    <div class="container-fluid py-5">
-  
-        <h4 class="display-5 fw-bold">Customer ID:{{details.customerId}}</h4>
-        <p class="col-md-8 fs-4">First Name:{{details.firstName}}</p>
-        <p class="col-md-8 fs-4">Last Name:{{details.lastName}}</p>
-        <p class="col-md-8 fs-4"> National Identity:{{details.nationalIdentity}}</p>
-       
-        <button class="btn btn-primary btn-lg" type="button">
-          Start New Order
-        </button>
-      </div>
-    </div>
 
-  
+<h4 class="display-5 fw-bold">Customer ID:{{ customerId }}</h4>
+
+<div *ngIf="individualCustomersDetail!==undefined" class="p-5 mb-4 bg-light rounded-3"  >
+  <div class="container-fluid py-5">
+    <!-- <h4 class="display-5 fw-bold">service:{{serviceId}}</h4> -->,
+    <div *ngFor="let p of individualCustomersDetail">
+      <p class="col-md-8 fs-4">First Name:{{ p.firstName }}</p>
+      <p class="col-md-8 fs-4">Last Name:{{ p.lastName }}</p>
+      <p class="col-md-8 fs-4">National Identity:{{ p.nationalIdentity }}</p>
+    </div>
+    <button class="btn btn-primary btn-lg" type="button">Start New Order </button>
+  </div>
+</div>
+
+  <div *ngIf="individualCustomersDetail!==undefined" class="p-5 mb-4 bg-light rounded-3" >
+    <div class="container-fluid py-5">
+    <div *ngFor="let p of corporateCustomersDetail">
+      <p class="col-md-8 fs-4">First Name:{{ p.companyName }}</p>
+      <p class="col-md-8 fs-4">Last Name:{{ p.taxNumber }}</p>
+    </div>
+    <button class="btn btn-primary btn-lg" type="button"> Start New Order</button>
+    </div>
+  </div>
+

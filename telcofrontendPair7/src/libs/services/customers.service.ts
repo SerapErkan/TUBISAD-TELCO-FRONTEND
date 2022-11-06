@@ -20,17 +20,30 @@ connections=environment.api
   getCustomer(): Observable<Customer[]> {
     return this.http.get<Customer[]>(this.connections.Url.customers.customers);
   }
+
+ //getIndividualCustomers
+ 
   getIndividualCustomers():Observable<IndividualCustomers[]>{
     return this.http.get<IndividualCustomers[]>(this.connections.Url.customers.individualCustomers)
-  }
-  getCorporateCustomers():Observable<CorporateCustomers[]>{
-   return this.http.get<CorporateCustomers[]>(this.connections.Url.customers.corporateCustomers)
   }
 
 
   getIndividualCustomerDetail(id: number): Observable<IndividualCustomers[]>{
     return this.http.get<IndividualCustomers[]>('http://localhost:3000/individualCustomers?customerId='+id)
   }
+
+
+  //CorporateCustomers
+
+  getCorporateCustomers():Observable<CorporateCustomers[]>{
+    return this.http.get<CorporateCustomers[]>(this.connections.Url.customers.corporateCustomers)
+   }
+ 
+
+  getCorporateCustomersDetail(id:number):Observable<CorporateCustomers[]>{
+    return this.http.get<CorporateCustomers[]>('http://localhost:3000/corporateCustomers?customerId='+id)
+   }
+
 
 //subscriptions
   getsubscriptions():Observable<Sub[]>{
