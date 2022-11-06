@@ -10,20 +10,19 @@
   </div>
 </section>
 
-
   <div *ngIf="corporateCustomers!"  class="container">
     <div *ngIf="CustomersType" class=" py-5 bg-light">
     
         <div class="row py-lg-3">
-          <div class="col-3"><label  for="">SearchLastName</label><input type="text" class="form-control form-control-lg" [(ngModel)]="searchLastName" /></div>
-          <div class="col-3"><label  for="">SearchFirtName</label><input type="text" class="form-control form-control-lg" [(ngModel)]="searchFirtName" /></div>
-          <div class="col-3"><label  for="">SearchNationalIdentity</label><input type="number" class="form-control form-control-lg" [(ngModel)]="searchId" /></div>
+          <div class="col-3"><label  for="">CompanyName</label><input type="text" class="form-control form-control-lg" [(ngModel)]="searchCompanyName" /></div>
+          <div class="col-3"><label  for="">TaxNumber</label><input type="number" class="form-control form-control-lg" [(ngModel)]="searchTaxNumber" /></div>
+          <div class="col"><button (click)="clearFilter()" class="btn btn-secondary ">x</button>
         </div>
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      <div class="col" *ngFor="let item of corporateCustomers ">
+      <div class="col" *ngFor="let item of corporateCustomers | companyName:searchCompanyName | taxNumber : searchTaxNumber ">
         <div class="card shadow-sm">
-          <div class="card-header py-3 text-bg-primary border-primary">
+          <div class="card-header py-3 text-bg-secondary border-primary">
             <h6 class="my-0 fw-normal">CustomerId :{{ item.customerId }}</h6>
           </div>
           <div class="card-body">
@@ -56,14 +55,18 @@
   <div *ngIf="!CustomersType" class=" py-5 bg-light">
   
       <div class="row py-lg-3">
-        <div class="col-3"><label  for="">SearchLastName</label><input type="text" class="form-control form-control-lg" [(ngModel)]="searchLastName" /></div>
-        <div class="col-3"><label  for="">SearchFirtName</label><input type="text" class="form-control form-control-lg" [(ngModel)]="searchFirtName" /></div>
-        <div class="col-3"><label  for="">SearchNationalIdentity</label><input type="number" class="form-control form-control-lg" [(ngModel)]="searchId" /></div>
+        <div class="col"><label  for="">SearchLastName</label><input type="text" class="form-control form-control-lg" [(ngModel)]="searchLastName" /></div>
+        <div class="col"><label  for="">SearchFirtName</label><input type="text" class="form-control form-control-lg" [(ngModel)]="searchFirtName" /></div>
+        <div class="col"><label  for="">SearchNationalIdentity</label><input type="number" class="form-control form-control-lg" [(ngModel)]="searchId" /></div>
+        <div class="col"><label  for="">SearchBirthDate</label><input type="date" class="form-control form-control-lg" [(ngModel)]="searchBirthDate" /></div>
+        <div class="col"><button (click)="clearFilter()" class="btn btn-primary ">x</button>
       </div>
   
 
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-    <div class="col" *ngFor="let item of individualCustomers |lastName:searchLastName |firtName: searchFirtName |customerId:searchId ">
+    <div class="col" *ngFor="let item of individualCustomers |lastName:searchLastName |firtName: searchFirtName |customerId:searchId |birthDate:searchBirthDate">
+
+      
    
       <div class="card shadow-sm">
         <div class="card-header py-3 text-bg-primary border-primary">

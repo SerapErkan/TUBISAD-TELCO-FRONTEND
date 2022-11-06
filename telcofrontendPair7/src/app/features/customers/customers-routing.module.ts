@@ -13,11 +13,11 @@ const routes: Routes = [{
   //     path:"details/:id ",
   //     component: DetailCustomerComponent,
   //   }, 
-  //   // {
-  //   //   path: "",
-  //   //   redirectTo: "/customers",
-  //   //   pathMatch: "full"
-  //   // }
+  //   {
+  //     path: "",
+  //     redirectTo: "/customers",
+  //     pathMatch: "full"
+  //   }
   // ]
 }
 

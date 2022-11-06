@@ -18,23 +18,22 @@ export class CustomersComponent implements OnInit {
   customers!: Customer[]
   corporateCustomers?: CorporateCustomers[];
   individualCustomers?: IndividualCustomers[];
-  sub:Sub[]=[];
 
+  //search
+  searchCompanyName!:string;
+  searchTaxNumber!:number;
+  searchBirthDate!:string;
   searchLastName!:string
   searchFirtName!:string
   searchId!:number
- CustomersType!:boolean
 
-
-
-  // subscriptions!:IndividualCustomers[]
+  
+  CustomersType!:boolean
 
   constructor(private customersService: CustomersService , private router:Router) {}
 
-  ngOnInit(): void {
-  //  this.getByCustomers();
-  console.log(this.individualCustomers,this.corporateCustomers)
-  }
+  ngOnInit(): void {}
+
   //customers
   getByCustomers(): void {
     this.customersService.getCustomer().subscribe((response) => {
@@ -43,7 +42,7 @@ export class CustomersComponent implements OnInit {
   }
   //individualCustomers
   getByIndividualCustomers(): void {
-    this.customersService.getIndividualCustomers().subscribe((response) => {
+      this.customersService.getIndividualCustomers().subscribe((response) => {
       this.individualCustomers = response;
       this.CustomersType=false
     });
@@ -57,14 +56,23 @@ export class CustomersComponent implements OnInit {
   }
   
   showDetails(id:number|undefined){
-    //queryParams
+    //queryParams--sor
     // this.router.navigate(['customers/details'],{queryParams: {customerId:id}})
     this.router.navigate(['/customers/details',id])
     
   }
 
 
+  clearFilter(){
+    this.searchCompanyName=""
+    this.searchTaxNumber=0
+    this. searchBirthDate=""
+    this.searchLastName=""
+    this.searchFirtName=""
+    this.searchId =0
 
+    
+  }
   
 
 
