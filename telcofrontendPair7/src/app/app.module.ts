@@ -20,6 +20,8 @@ import { NotFoundComponent } from './component/not-found/not-found.component';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './component/home/home.component';
 import { LoginService } from 'src/libs';
+import { DetailCustomerComponent } from './component/detail-customer/detail-customer.component';
+
 
 
 @NgModule({
@@ -29,6 +31,7 @@ import { LoginService } from 'src/libs';
     SpinnerComponent,
     NotFoundComponent,
     HomeComponent,
+  DetailCustomerComponent
 
   ],
   imports: [

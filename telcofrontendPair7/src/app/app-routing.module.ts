@@ -7,6 +7,7 @@ import { ServicesComponent } from './features/service/services.component';
 import { HomeComponent } from './component/home/home.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
+import { DetailCustomerComponent } from './component/detail-customer/detail-customer.component';
 
 const routes: Routes = [
 
@@ -41,6 +42,11 @@ const routes: Routes = [
   {
     path: "customers",
     loadChildren: () => import('./features/customers/customers.module').then(m => m.CustomersModule)
+    ,canActivate: [AuthGuard]
+  },
+
+  {
+    path:"customers/details/:id", component:DetailCustomerComponent
     ,canActivate: [AuthGuard]
   },
   {

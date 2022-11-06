@@ -1,6 +1,6 @@
+
+
 import { Component, OnInit } from '@angular/core';
-
-
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomersService } from 'src/libs';
 import { IndividualCustomers } from 'src/libs/models/individual-customers';
@@ -13,7 +13,6 @@ import { IndividualCustomers } from 'src/libs/models/individual-customers';
 export class DetailCustomerComponent implements OnInit {
   id !: number ;
   details !: IndividualCustomers;
-
   constructor(private customersService:CustomersService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
@@ -24,6 +23,5 @@ export class DetailCustomerComponent implements OnInit {
     } )
   });
  }
- 
 
 }
