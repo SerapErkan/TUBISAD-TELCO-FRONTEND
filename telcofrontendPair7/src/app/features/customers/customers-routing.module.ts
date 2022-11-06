@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CustomersComponent } from './customers.component';
-import { DetailComponent } from './detail/detail.component';
+import { DetailCustomerComponent } from './detail-customer/detail-customer.component';
+
 
 const routes: Routes = [{
   path: "",
@@ -9,9 +10,9 @@ const routes: Routes = [{
 },
 {
   path: "details/:id ",
-  component: DetailComponent,
+  component:DetailCustomerComponent,
 }
-,
+// ,
 // {
 //   path:"",
 //   redirectTo:"/customers",
