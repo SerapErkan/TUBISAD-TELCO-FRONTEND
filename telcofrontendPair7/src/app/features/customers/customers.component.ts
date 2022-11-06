@@ -28,11 +28,12 @@ export class CustomersComponent implements OnInit {
   searchId!:number
 
   
-  CustomersType!:boolean
+  CustomersType!:boolean;
 
   constructor(private customersService: CustomersService , private router:Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   //customers
   getByCustomers(): void {
@@ -42,16 +43,19 @@ export class CustomersComponent implements OnInit {
   }
   //individualCustomers
   getByIndividualCustomers(): void {
+    this.CustomersType=false;
       this.customersService.getIndividualCustomers().subscribe((response) => {
       this.individualCustomers = response;
-      this.CustomersType=false
+   
     });
   }
   //corporateCustomers
   getByCorporateCustomers(): void {
+    this.CustomersType=true;
     this.customersService.getCorporateCustomers().subscribe((response) => {
       this.corporateCustomers = response;
-      this.CustomersType=true
+ 
+  
     });
   }
   
@@ -65,11 +69,11 @@ export class CustomersComponent implements OnInit {
 
   clearFilter(){
     this.searchCompanyName=""
-    this.searchTaxNumber=0
+    // this.searchTaxNumber=0
     this. searchBirthDate=""
     this.searchLastName=""
     this.searchFirtName=""
-    this.searchId =0
+    // this.searchId =0
 
     
   }
