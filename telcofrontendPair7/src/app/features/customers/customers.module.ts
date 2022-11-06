@@ -13,8 +13,9 @@ import { FirtNamePipe, LastNamePipe, CustomerIdPipe } from 'src/libs';
 
 @NgModule({
   declarations: [
+    
     CustomersComponent,
-     DetailComponent,
+  DetailComponent,
     FirtNamePipe,
     LastNamePipe,
     CustomerIdPipe,

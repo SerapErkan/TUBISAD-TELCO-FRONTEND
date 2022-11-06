@@ -13,12 +13,12 @@ import { CustomersService } from 'src/libs/services/customers.service';
 })
 export class CustomersComponent implements OnInit {
 
-  customers!: Customer[];
+  customers!: Customer[]
   corporateCustomers!: CorporateCustomers[];
   individualCustomers!: IndividualCustomers[];
 
-  searchLastName:string=""
-  searchFirtName:string=""
+  searchLastName!:string
+  searchFirtName!:string
   searchId!:number
 
 

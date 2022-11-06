@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { CorporateCustomers } from '../models/corporate-customers';
 import { Customer } from '../models/customer';
 import { IndividualCustomers } from '../models/individual-customers';
+import { Subscriptions } from '../models/subscriptions';
 
 @Injectable({
   providedIn: 'root'
@@ -26,10 +27,13 @@ connections=environment.api
   }
 
   //
-  getIndividualCustomersId(id:number):Observable<IndividualCustomers[]>{
+  // getIndividualCustomersId(id:number):Observable<IndividualCustomers[]>{
+  //   return this.http.get<IndividualCustomers[]>(this.connections.Url.customers.individualCustomers +'?customerId='+id)
+  // }
+
+  getIndividualCustomerDetail(id: number): Observable<IndividualCustomers[]>{
     return this.http.get<IndividualCustomers[]>('http://localhost:3000/individualCustomers?customerId=' + id)
   }
-
   // 'http://localhost:3000/individualCustomers?customerId=
   // individualCustomer/details/:id
   
