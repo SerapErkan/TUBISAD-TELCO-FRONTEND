@@ -10,7 +10,7 @@ export *from "./models/login-response"
 export*from"./models/user-token"
 export * from "./models/users"
 export *from "./models/service"
-export * from "./models/subscriptions"
+export * from "./models/sub"
 
 
 //services

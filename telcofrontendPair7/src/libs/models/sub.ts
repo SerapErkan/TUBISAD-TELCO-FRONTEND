@@ -1,5 +1,4 @@
-export interface Subscriptions {
-
+export interface Sub{
     id:number;
     customerId:number;
     serviceId:number;

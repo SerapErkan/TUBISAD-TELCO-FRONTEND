@@ -5,4 +5,5 @@ export interface IndividualCustomers  extends Customer{
     firstName:string;
     lastName:string;
     nationalIdentity:number;
+    birthDate:Date;
 }

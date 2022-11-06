@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { stripe } from '@igniteui/material-icons-extended';
+import { Sub } from 'src/libs';
 import { CorporateCustomers } from 'src/libs/models/corporate-customers';
 import { Customer } from 'src/libs/models/customer';
 import { IndividualCustomers } from 'src/libs/models/individual-customers';
@@ -14,41 +16,43 @@ import { CustomersService } from 'src/libs/services/customers.service';
 export class CustomersComponent implements OnInit {
 
   customers!: Customer[]
-  corporateCustomers: CorporateCustomers[]=[];
-  individualCustomers: IndividualCustomers[]=[];
+  corporateCustomers?: CorporateCustomers[];
+  individualCustomers?: IndividualCustomers[];
+  sub:Sub[]=[];
 
   searchLastName!:string
   searchFirtName!:string
   searchId!:number
+ CustomersType!:boolean
+
 
 
   // subscriptions!:IndividualCustomers[]
 
-  constructor(private customersService: CustomersService , private router:Router) {
-   
-
-   }
+  constructor(private customersService: CustomersService , private router:Router) {}
 
   ngOnInit(): void {
-    this.getByCustomers();
-   this.getByIndividualCustomers();
-   this.getByCorporateCustomers()
-
-    
+  //  this.getByCustomers();
+  console.log(this.individualCustomers,this.corporateCustomers)
   }
+  //customers
   getByCustomers(): void {
     this.customersService.getCustomer().subscribe((response) => {
-      this.customers = response;
+    this.customers = response;
     });
   }
+  //individualCustomers
   getByIndividualCustomers(): void {
     this.customersService.getIndividualCustomers().subscribe((response) => {
       this.individualCustomers = response;
+      this.CustomersType=false
     });
   }
+  //corporateCustomers
   getByCorporateCustomers(): void {
     this.customersService.getCorporateCustomers().subscribe((response) => {
       this.corporateCustomers = response;
+      this.CustomersType=true
     });
   }
   
@@ -58,5 +62,12 @@ export class CustomersComponent implements OnInit {
     this.router.navigate(['/customers/details',id])
     
   }
+
+
+
+  
+
+
+
 
 }

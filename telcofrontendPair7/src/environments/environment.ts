@@ -20,7 +20,7 @@ export const environment = {
         customers: 'http://localhost:3000/customers',
         corporateCustomers: 'http://localhost:3000/corporateCustomers',
         individualCustomers: 'http://localhost:3000/individualCustomers',
-        subscription:"http://localhost:3000/subscriptions?customerId="
+        subscription:"http://localhost:3000/subscriptions",
 
       }
 

@@ -1,41 +1,38 @@
 <section class="py-5 text-center container">
-
   <div class="row py-lg-3">
     <div class="col-lg-6 col-md-8 mx-auto">
       <h3 class="fw-light">Customers Filter </h3>
     </div>
+    <p>
+      <button   [ngClass]="{'active':!CustomersType}" (click)="getByIndividualCustomers()" class="btn btn-primary my-2 btn-lg me-md-2"> İndividual Customers</button>
+      <button   [ngClass]="{'active':CustomersType}" (click)="getByCorporateCustomers()"  class="btn btn-secondary my-2 btn-lg">Corporate Customers</button>
+    </p>
   </div>
-
-  <div class="row">
-   
-    <div class="col-3"><label  for="">SearchLastName</label><input type="text" class="form-control form-control-lg" [(ngModel)]="searchLastName" /></div>
-    <div class="col-3"><label  for="">SearchFirtName</label><input type="text" class="form-control form-control-lg" [(ngModel)]="searchFirtName" /></div>
-    <div class="col-3"><label  for="">SearchNationalIdentity</label><input type="number" class="form-control form-control-lg" [(ngModel)]="searchId" /></div>
-  </div>
-  
-
-
 </section>
 
 
+  <div *ngIf="corporateCustomers!"  class="container">
+    <div *ngIf="CustomersType" class=" py-5 bg-light">
+    
+        <div class="row py-lg-3">
+          <div class="col-3"><label  for="">SearchLastName</label><input type="text" class="form-control form-control-lg" [(ngModel)]="searchLastName" /></div>
+          <div class="col-3"><label  for="">SearchFirtName</label><input type="text" class="form-control form-control-lg" [(ngModel)]="searchFirtName" /></div>
+          <div class="col-3"><label  for="">SearchNationalIdentity</label><input type="number" class="form-control form-control-lg" [(ngModel)]="searchId" /></div>
+        </div>
 
-
-
-<div class="album py-5 bg-light">
-  <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      <div class="col" *ngFor="let item of individualCustomers |lastName:searchLastName |firtName: searchFirtName |customerId:searchId ">
-     
+      <div class="col" *ngFor="let item of corporateCustomers ">
         <div class="card shadow-sm">
           <div class="card-header py-3 text-bg-primary border-primary">
             <h6 class="my-0 fw-normal">CustomerId :{{ item.customerId }}</h6>
           </div>
           <div class="card-body">
             <p class="card-text">
-             Customer:{{ item.firstName }}-{{ item.lastName }}
-              NationalIdentity: {{ item.nationalIdentity}}
-              
+              CompanyName:{{ item.companyName }}
             </p>
+            <p class="card-text">
+              TaxNumber :{{ item.taxNumber }}
+             </p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <button type="button" (click)="showDetails(item.customerId)" class="btn btn-sm btn-outline-secondary">  
@@ -53,7 +50,48 @@
 </div>
 
 
- <!-- <button type="button"  [routerLink]="['/detail']" [queryParams]="{customerId:'{{item.customerId}}'}"
-                class="btn btn-sm btn-outline-secondary"> 
-                  View
-                </button> -->
+<!-- // <ng-template [ngTemplateOutlet]="outlet" [ngOutletContext]="context"></ng-template> -->
+
+<div  *ngIf="individualCustomers!" class="container">
+  <div *ngIf="!CustomersType" class=" py-5 bg-light">
+  
+      <div class="row py-lg-3">
+        <div class="col-3"><label  for="">SearchLastName</label><input type="text" class="form-control form-control-lg" [(ngModel)]="searchLastName" /></div>
+        <div class="col-3"><label  for="">SearchFirtName</label><input type="text" class="form-control form-control-lg" [(ngModel)]="searchFirtName" /></div>
+        <div class="col-3"><label  for="">SearchNationalIdentity</label><input type="number" class="form-control form-control-lg" [(ngModel)]="searchId" /></div>
+      </div>
+  
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <div class="col" *ngFor="let item of individualCustomers |lastName:searchLastName |firtName: searchFirtName |customerId:searchId ">
+   
+      <div class="card shadow-sm">
+        <div class="card-header py-3 text-bg-primary border-primary">
+          <h6 class="my-0 fw-normal">CustomerId :{{ item.customerId }}</h6>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            Name :{{ item.firstName }}-{{ item.lastName }}
+          </p>
+          <p class="card-text">
+      
+             NationalIdentity: {{ item.nationalIdentity}} 
+          </p>
+          <p class="card-text">
+            BirthDate :{{item.birthDate}}
+           </p>
+        
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button type="button" (click)="showDetails(item.customerId)" class="btn btn-sm btn-outline-secondary">  
+                View
+              </button>
+            </div>
+            <small class="text-muted">*</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
