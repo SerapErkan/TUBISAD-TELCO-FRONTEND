@@ -4,8 +4,9 @@ import { CommonModule } from '@angular/common';
 import { CustomersRoutingModule } from './customers-routing.module';
 import { CustomersComponent } from './customers.component';
 import { CustomersService } from 'src/libs/services/customers.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FirtNamePipe, LastNamePipe, CustomerIdPipe, TaxNumberPipe, CompanyNamePipe, BirthDatePipe } from 'src/libs';
+import { CreateCustomerComponent } from './create-customer/create-customer.component';
 
 
 
@@ -19,12 +20,13 @@ import { FirtNamePipe, LastNamePipe, CustomerIdPipe, TaxNumberPipe, CompanyNameP
     CustomerIdPipe,
     TaxNumberPipe,
     CompanyNamePipe,
-    BirthDatePipe
+    BirthDatePipe,
+    CreateCustomerComponent
 
   ],
   imports: [
     CommonModule,
-    CustomersRoutingModule, FormsModule,
+    CustomersRoutingModule, FormsModule,ReactiveFormsModule
   ],
   providers: [CustomersService]
 })

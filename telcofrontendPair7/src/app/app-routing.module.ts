@@ -24,23 +24,23 @@ const routes: Routes = [
 
   {
 
-    path: "auth",
+    path:"auth",
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
     ,canActivate: [LoginGuard]
   },
   {
 
-    path: "services",
+    path:"services",
     loadChildren: () => import('./features/service/service.module').then(m => m.ServiceModule)
     , canActivate: [AuthGuard]
   },
 
   {
-    path: "products",
+    path:"products",
     loadChildren: () => import('./features/product/product.module').then(m => m.ProductModule)
   },
   {
-    path: "customers",
+    path:"customers",
     loadChildren: () => import('./features/customers/customers.module').then(m => m.CustomersModule)
     ,canActivate: [AuthGuard]
   },
@@ -50,7 +50,7 @@ const routes: Routes = [
     ,canActivate: [AuthGuard]
   },
   {
-    path: "roles",
+    path:"roles",
     loadChildren: () => import('./features/roles/roles.module').then(m => m.RolesModule)
   },
   {

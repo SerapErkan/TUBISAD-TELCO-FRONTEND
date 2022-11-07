@@ -1,9 +1,6 @@
-
-
-import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CustomersService, Sub } from 'src/libs';
+import { CustomersService, Service, ServicesService, Sub } from 'src/libs';
 import { CorporateCustomers } from 'src/libs/models/corporate-customers';
 import { IndividualCustomers } from 'src/libs/models/individual-customers';
 
@@ -15,12 +12,24 @@ import { IndividualCustomers } from 'src/libs/models/individual-customers';
 })
 export class DetailCustomerComponent implements OnInit {
   customerId !: number;
+
   individualCustomersDetail!: IndividualCustomers[];
   corporateCustomersDetail !: CorporateCustomers[];
+  serviceCustomerDetail!:Service[];
+  subscriptionsCustomerDetail!:Sub[];
+  serviceId!:number[];
+
+
+
   customerType!: boolean;
   error!:string;
-
-  constructor(private customersService: CustomersService, private route: ActivatedRoute, private router: Router) { }
+  
+  constructor(
+    private customersService: CustomersService,
+     private route: ActivatedRoute, 
+     private router: Router,
+     private servicesService:ServicesService
+     ) { }
 
   ngOnInit(): void {
 
@@ -33,6 +42,9 @@ export class DetailCustomerComponent implements OnInit {
 
     this.individualCustomersSub()
     this.corporateCustomersSub()
+    this.getCustomerSubs()
+    this.getService()
+
   }
 
 
@@ -71,26 +83,52 @@ export class DetailCustomerComponent implements OnInit {
     })
   }
 
-  getCustomerService(){
 
-  }
-  getSustomerSubs(){
- this.customersService.getsubscriptionsDetail(this.customerId).subscribe({
+  getCustomerSubs(){
+
+  this.customersService.getsubscriptionsDetail(this.customerId).subscribe({
   next:(res)=>{
+  this.subscriptionsCustomerDetail=(res.filter(f=>f.customerId===this.customerId));
+  this.serviceId=this.subscriptionsCustomerDetail.map(sub =>sub.serviceId);
 
   },
   error:(err)=>{
-
+    console.log(err);
+    this.error = err.statusText;
   },
   complete:()=>{
-    
+    console.log(this.subscriptionsCustomerDetail, "Subscriptions")
+    console.log(this.serviceId, "serviceID");
   }
  })
   }
 
+  
+getService(){
+ 
+    this.servicesService.getServices().subscribe({
+    next:(res)=>{
+    this.serviceCustomerDetail=res
+    console.log(this.serviceCustomerDetail,"servisler")
+    },error:(err)=>{
+      console.log(err);
+      this.error = err.statusText;
+    },
+    complete:()=>{
+        
+    }
+  }
+  )
+    
+  };
+
+  }
 
 
-}
+
+  
+
+
 
   //2.yol
   //   this.route.params.subscribe(params => {
@@ -99,4 +137,17 @@ export class DetailCustomerComponent implements OnInit {
   //   console.log(response);
   //     } )
   //   });
-  
+// }
+// this.servicesService.getServicesDetail().subscribe({
+//   next:(res)=>{
+//   this.serviceCustomerDetail=res;
+//   },
+//   error:()=>{
+
+//   },
+//   complete() {
+//     console.log()
+//   },
+// })
+
+// }

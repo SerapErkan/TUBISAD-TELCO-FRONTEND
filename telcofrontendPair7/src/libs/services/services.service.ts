@@ -29,4 +29,10 @@ export class ServicesService {
   update(id: number,service: Service): Observable<Service> {
     return this.httpClient.put<Service>( 'http://localhost:3000/services/' + id,  service );
   }
+
+  // getServicesDetail(...serviceId:number[]): Observable<Service[]>{
+    
+  //   return this.httpClient.get<Service[]>('http://localhost:3000/services'+ serviceId)
+
+  //   }
 }

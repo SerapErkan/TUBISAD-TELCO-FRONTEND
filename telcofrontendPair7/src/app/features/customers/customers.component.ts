@@ -78,7 +78,9 @@ export class CustomersComponent implements OnInit {
     
   }
   
-
+  createCustomers(){
+    this.router.navigate(['/customers/createCustomer'])
+  }
 
 
 

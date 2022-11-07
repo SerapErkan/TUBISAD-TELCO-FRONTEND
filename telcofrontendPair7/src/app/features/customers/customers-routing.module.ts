@@ -1,24 +1,24 @@
-import { NgModule } from '@angular/core';
+import { createComponent, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CreateCustomerComponent } from './create-customer/create-customer.component';
 import { CustomersComponent } from './customers.component';
 
 
 
 const routes: Routes = [{
-  path:"",
+  path: "",
   component: CustomersComponent,
-  
-  // children: [
-  //   {
-  //     path:"details/:id ",
-  //     component: DetailCustomerComponent,
-  //   }, 
-  //   {
-  //     path: "",
-  //     redirectTo: "/customers",
-  //     pathMatch: "full"
-  //   }
-  // ]
+
+},
+{
+  path: "createCustomer",
+  component: CreateCustomerComponent,
+
+},
+{
+  path: "**",
+  redirectTo: "/customers",
+  pathMatch: "full"
 }
 
 
