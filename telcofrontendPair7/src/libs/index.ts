@@ -7,7 +7,7 @@ export * from "./interceptors/loading.interceptor"
 export *from "./models/login-response"
 
 //models
-export*from"./models/user-token"
+
 export * from "./models/users"
 export *from "./models/service"
 export * from "./models/sub"

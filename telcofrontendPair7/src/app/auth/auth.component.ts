@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService,LocalStorageService,Users, UserToken } from 'src/libs';
+import { AuthService,LocalStorageService,Users} from 'src/libs';
 
 @Component({
   selector: 'app-auth',

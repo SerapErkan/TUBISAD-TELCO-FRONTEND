@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs'
 import { Users } from '../models/users';
-import { catchError, tap } from 'rxjs/operators';
-import { UserToken } from '../models/user-token';
 import { LoginResponse } from '../models/login-response';
 
 

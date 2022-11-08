@@ -1,93 +1,61 @@
-<article>
-<br>
-<br>
 
 
-<div class="row">
-  <div class="col"></div>
-  <div class="col align-self-end">
-<igx-radio value="option1"  (click)="typeSelection(true)" >individualCustomers</igx-radio>
-<br>
-<igx-radio value="option2" (click)="typeSelection(false)">corporateCustomers</igx-radio>
-  </div>
-</div>
-
-<!-- 1customer -->
-  <div  *ngIf="activeForm" class="row align-items-center">
-    <div class="col"></div>
-    <div class="col">
-      <form [formGroup]="createIndividualCustomer">
-        <igx-input-group>
-          <input igxInput id="customerId"  type="text" formControlName="customerId" />
-          <label igxLabel for="customerId">CustemerID</label>
-        </igx-input-group>
-
-        <igx-input-group>
-          <input igxInput id="firstName" type="text" formControlName="firstName"/>
-          <label igxLabel for="firstName">FirstName</label>
-        </igx-input-group>
-
-        <igx-input-group>
-          <input igxInput id="lastName" type="text" formControlName="lastName" />
-          <label igxLabel for="lastName">lastName</label>
-        </igx-input-group>
-
-        <igx-input-group>
-          <input igxInput id="nationalIdentity" type="text" formControlName="nationalIdentity" />
-          <label igxLabel for="nationalIdentity" >NationalIdentity</label>
-        </igx-input-group>
-
-        <div class="date-picker-wrapper">
-          <igx-date-picker id="birthDate"  formControlName="birthDate"  >
-            <label igxLabel>Date</label>
-          </igx-date-picker>
-        </div>
-        
-      </form>
-    </div>
-    <div class="col"></div>
-  </div>
-<!--2customer -->
-
-<div *ngIf="!activeForm" class="row align-items-center">
-  <div class="col"></div>
-  <div class="col">
-    <form [formGroup]="createCorporateCustomer">
-
-      <igx-input-group>
-        <input igxInput id="customerId" type="text" formControlName="customerId"/>
-        <label igxLabel for="fullName">Custemer ID  </label>
-      </igx-input-group>
-
-      <igx-input-group>
-        <input igxInput id="companyName" type="text" formControlName="companyName" />
-        <label igxLabel for="companyName">Company Name</label>
-      </igx-input-group>
-
-      <igx-input-group>
-        <input igxInput id="taxNumber"  type="text" formControlName="taxNumber" />
-        <label igxLabel for="taxNumber">Tax Number</label>
-      </igx-input-group>
-
-      <div class="row">
-        <div class="col"></div>
-        <div class="col"></div>
-      <div class="col align-self-end">
-        <br>
-        <button  type="submit" igxButton="outlined" igxRipple>Outlined</button>
-      </div>
-      </div>
+<div class="container2">
+  <div class="content">
+      <div *ngIf="customerType" class="customer-type"> 
+          <h6> 
+              <button (click)="typeSelection(true)" class="btn-indCustomer">Individual Customers</button>
+          </h6>
+  
+          <h6>
+              <button (click)="typeSelection(false)" class="btn-corpCustomer">Corporate Customers</button>
+          </h6>
       
-    </form>
-  </div>
-  <div class="col"></div>
-</div>
-<!-- servise -->
+          <div *ngIf="activeForm" class="customer-Form1"> 
 
-<div *ngFor="let p of services">
-  <igx-radio >
-    {{p.name}}
-  </igx-radio> 
-</div>
+              <form [formGroup]="individualForm">
 
-</article>
+              <label>First Name</label>
+              <input type="text" formControlName="firstName">
+              <br>
+              <label>Last Name</label>
+              <input type="text" formControlName="lastName">
+              <br>
+              <label>National ID</label>
+              <input type="number" formControlName="nationalIdentity">
+              <br>
+              <label>Birth Date</label>
+              <input type="date" formControlName="birthDate">
+          
+              <button class="form-next1" type="submit" [disabled]="!individualForm.valid" (click)="addIndCustomer()">Next</button>
+              </form>
+          </div>
+           <div *ngIf="!activeForm" class="customer-Form2"> 
+                  <form [formGroup]="corporateForm">
+                  <label>Company Name</label>
+                  <input type="text" formControlName="companyName">
+                  <br>
+                  <label>Tax Number</label>
+                  <input type="number" formControlName="taxNumber">
+                  <button class="form-next" type="button" [disabled]="!corporateForm.valid" (click)="addCorpCustomer()">Next</button>
+                  </form>
+          </div>
+          
+      </div>
+      <div *ngIf="servicelist" class="services">
+          <ul>
+              <li (click)="selectedService = service" class="btn-services" *ngFor="let service of services"> {{service.id}} - {{service.name}}</li>
+              <button class="form-next" type="button"  (click)="addService()">Next</button>     
+          </ul>
+      </div>
+      <div *ngIf="customerInfos" class="customer-infos">
+          <ul>
+              <button class="form-next" type="button"  (click)="saveCustomer">Next</button>
+      
+          </ul>
+      </div>
+   
+      </div>
+  
+
+</div>

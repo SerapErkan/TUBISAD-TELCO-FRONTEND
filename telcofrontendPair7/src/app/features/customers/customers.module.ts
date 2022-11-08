@@ -7,7 +7,13 @@ import { CustomersService } from 'src/libs/services/customers.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FirtNamePipe, LastNamePipe, CustomerIdPipe, TaxNumberPipe, CompanyNamePipe, BirthDatePipe } from 'src/libs';
 import { CreateCustomerComponent } from './create-customer/create-customer.component';
-
+import {
+  IgxButtonModule,
+  IgxIconModule,
+  IgxInputGroupModule,
+  IgxDatePickerModule ,
+  IgxRadioModule 
+} from "igniteui-angular";
 
 
 @NgModule({
@@ -21,12 +27,24 @@ import { CreateCustomerComponent } from './create-customer/create-customer.compo
     TaxNumberPipe,
     CompanyNamePipe,
     BirthDatePipe,
-    CreateCustomerComponent
+    CreateCustomerComponent,
+
 
   ],
   imports: [
     CommonModule,
-    CustomersRoutingModule, FormsModule,ReactiveFormsModule
+    CustomersRoutingModule, 
+    FormsModule,
+    ReactiveFormsModule,
+
+    // uI
+   IgxButtonModule,
+   IgxIconModule,
+   IgxInputGroupModule,
+   IgxDatePickerModule,
+   IgxRadioModule 
+
+
   ],
   providers: [CustomersService]
 })

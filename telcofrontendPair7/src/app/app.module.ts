@@ -21,8 +21,16 @@ import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './component/home/home.component';
 import { LoginService } from 'src/libs';
 import { DetailCustomerComponent } from './component/detail-customer/detail-customer.component';
+import { StoreModule } from '@ngrx/store';
+import { indCustomerReducer, corpCustomerReducer } from './store/reducers/customer.reducer';
+import { serviceReducer } from './store/reducers/services.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
+//STORE
+import { AppStoreState } from './store/app.state';
+import { appReducers } from './store/app.reducer';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -55,7 +63,21 @@ import { DetailCustomerComponent } from './component/detail-customer/detail-cust
         progressAnimation:"decreasing",
         preventDuplicates:true,
         positionClass:"toast-bottom-left"
-      })// ToastrModule added
+      }),
+      // ToastrModule added
+      //STORE
+      // StoreModule.forRoot<AppStoreState>(appReducers)
+     
+      StoreModule.forRoot({}),
+      StoreModule.forFeature('indCustomer', indCustomerReducer),
+      StoreModule.forFeature('corpCustomer', corpCustomerReducer),
+      StoreModule.forFeature('service', serviceReducer),
+
+      StoreDevtoolsModule.instrument({
+        maxAge: 25, // Retains last 25 states
+        logOnly:environment.production, // Restrict extension to log-only mode
+        autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+      }),
     
   ],
   providers: [LoginService,LoadingService,{ provide: HTTP_INTERCEPTORS, useClass:LoadingInterceptor, multi: true }],
