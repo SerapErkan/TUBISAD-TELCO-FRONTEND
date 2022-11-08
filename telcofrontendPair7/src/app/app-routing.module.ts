@@ -35,10 +35,7 @@ const routes: Routes = [
     , canActivate: [AuthGuard]
   },
 
-  {
-    path:"products",
-    loadChildren: () => import('./features/product/product.module').then(m => m.ProductModule)
-  },
+
   {
     path:"customers",
     loadChildren: () => import('./features/customers/customers.module').then(m => m.CustomersModule)
@@ -53,10 +50,7 @@ const routes: Routes = [
     path:"roles",
     loadChildren: () => import('./features/roles/roles.module').then(m => m.RolesModule)
   },
-  {
-    path: "categories",
-    loadChildren: () => import('./features/categories/categories.module').then(m => m.CategoriesModule)
-  },
+
   {
     path: "**",
     component: NotFoundComponent

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators,FormBuilder,FormArray } from '@angular/forms';
-import { Service, ServicesService } from 'src/libs';
+import { CustomersService, Service, ServicesService } from 'src/libs';
 import { Store } from '@ngrx/store';
 import {  Observable } from 'rxjs';
 import { IndividualCustomers } from 'src/libs/models/individual-customers';
@@ -10,6 +10,7 @@ import { addCorpCustomer, addIndCustomer } from '../../../store/actions/customer
  import { serviceSelector } from '../../../store/selectors/service.selector';
  import { addService } from '../../../store/actions/service.actions';
 
+ 
 @Component({
   selector: 'app-create-customer',
   templateUrl: './create-customer.component.html',
@@ -21,7 +22,6 @@ export class CreateCustomerComponent implements OnInit {
 
   indCustomerForm! : FormGroup
   corpCustomerForm! : FormGroup
-
   CustomerType : string = "";
   servicelist : boolean = false;
   selectedService !: Service ;
@@ -32,7 +32,6 @@ export class CreateCustomerComponent implements OnInit {
   services!:Service[];
 
   createcreateServicesForm!: FormGroup;
-  // customerType :string=""
   activeForm:boolean=true;
   showIndCustomer : boolean = false;
   showCorpCustomer : boolean = false;
@@ -44,15 +43,11 @@ export class CreateCustomerComponent implements OnInit {
 
 
 
-
-
-
-
-
   constructor(
     private servicesService :ServicesService ,
     private formBuilder:FormBuilder,
-    private store :Store
+    private store :Store,
+    private customerService :CustomersService
     ) { }
 
   ngOnInit(): void {
@@ -84,11 +79,7 @@ getService(){
     this.activeForm=false;
     }
   }
-
-
   // ----------------222
-  
-
   // CorpCustomer(){
   //   this.indCustomerForm = false;
   //   this.corpCustomerForm = true;
@@ -137,8 +128,6 @@ getService(){
    addService(){
     this.servicelist = false
     this.customerInfos = true
-
-
     this.store.dispatch(addService({
       service: this.selectedService
     }));
@@ -155,12 +144,12 @@ getService(){
     this.corpCustomerSelection.subscribe(response => {this.corpCustomerSave = response})
     
     
-    
    }
-
    saveCustomer(){
-    console.log("dsdsa");
-    
+    console.log("denemmmeeee",this.corpCustomerSave);
+    console.log("denemmmeeee2",{...this.corpCustomerSave});
+    this.customerService.getCorporateCustomersDetail
+    this.customerService.addCorporateCustomer(this.corpCustomerSave)
    }
    
   

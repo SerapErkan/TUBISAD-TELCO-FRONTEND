@@ -125,11 +125,6 @@ getService(){
   }
 
 
-
-  
-
-
-
   //2.yol
   //   this.route.params.subscribe(params => {
   //   this.customersService.getsubscriptionsDetail(+params['id']).subscribe(response =>{
@@ -138,6 +133,7 @@ getService(){
   //     } )
   //   });
 // }
+
 // this.servicesService.getServicesDetail().subscribe({
 //   next:(res)=>{
 //   this.serviceCustomerDetail=res;

@@ -9,11 +9,8 @@
     </igx-navbar-action>
 
 
-    <h6 *ngIf="loggedin()"routerLink="/products">Product</h6>
-    <h6 *ngIf="loggedin()"routerLink="/categories">Category</h6>
     <h6 *ngIf="loggedin()"routerLink="/customers">Customer</h6>
     <h6 *ngIf="loggedin()"routerLink="/roles">Role</h6>
-
     <h6 *ngIf="loggedin()" routerLink="/services" >Service</h6>
 
         <h6 *ngIf="!loggedin()"  class="btn btn-primary me-md-2" routerLink="/auth">Login</h6>

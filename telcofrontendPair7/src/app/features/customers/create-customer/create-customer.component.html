@@ -43,19 +43,43 @@
           
       </div>
       <div *ngIf="servicelist" class="services">
-          <ul>
-              <li (click)="selectedService = service" class="btn-services" *ngFor="let service of services"> {{service.id}} - {{service.name}}</li>
-              <button class="form-next" type="button"  (click)="addService()">Next</button>     
-          </ul>
-      </div>
-      <div *ngIf="customerInfos" class="customer-infos">
-          <ul>
-              <button class="form-next" type="button"  (click)="saveCustomer">Next</button>
-      
-          </ul>
-      </div>
-   
-      </div>
-  
+        <ul>
+            <li (click)="selectedService = service" class="btn-services" *ngFor="let service of services"> {{service.id}} - {{service.name}}</li>
+            <button class="form-next" type="button"  (click)="addService()">Next</button>
+                
+        </ul>
+    </div>
+    <div *ngIf="customerInfos" class="customer-infos">
+        <h4>Customer</h4>
+        <span *ngIf="showIndCustomer">
+             First Name: {{indCustomerSave[0].firstName}}
+             <br>
+             Last Name: {{indCustomerSave[0].lastName}}
+             <br>
+             Birth Date:{{indCustomerSave[0].birthDate}}
+             <br>
+             National ID: {{indCustomerSave[0].nationalIdentity}}
+             <br>
+                
+        </span>
+        <span *ngIf="showCorpCustomer">
+            companyName : {{corpCustomerSave[0].companyName}}
+            <br>
+             Tax Number : {{corpCustomerSave[0].taxNumber}}
+             <br>
+        </span>
+        <span>
+            <h4>Service</h4>
+            {{serviceSave[0].id}}-{{serviceSave[0].name}}
+            
+        </span>
+        <br>
+        <button routerLink="/customers" (click)="saveCustomer()">Save</button>
+    </div>
+ 
+    </div>
+
 
 </div>
+
+

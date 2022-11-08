@@ -54,7 +54,9 @@ connections=environment.api
   }
 
 
-
+  addCorporateCustomer(customer : CorporateCustomers[]):Observable<CorporateCustomers[]>{
+    return this.http.post<CorporateCustomers[]>('http://localhost:3000/corporateCustomers', customer)
+  }
 
 
 
