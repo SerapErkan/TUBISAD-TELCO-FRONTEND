@@ -14,9 +14,9 @@
 
 
   <div  class="container"  >
-    <div class=" py-5 bg-light">
+    <div class=" py-5 bg-light" *ngIf="corporateCustomers!" >
     
-        <div class="row py-lg-3"*ngIf="corporateCustomers!">
+        <div class="row py-lg-3">
           <div class="col-3"><label  for="">CompanyName</label><input type="text" class="form-control form-control-lg" [(ngModel)]="searchCompanyName" /></div>
           <div class="col-3"><label  for="">TaxNumber</label><input type="number" class="form-control form-control-lg" [(ngModel)]="searchTaxNumber" /></div>
           <div class="col"> <button type="button" (click)="clearFilter()" class="btn btn-secondary ">x</button>
@@ -52,8 +52,8 @@
   </div>
 
 <div class="container">
-  <div   class=" py-5 bg-light">
-      <div class="row py-lg-3" *ngIf="individualCustomers!" >
+  <div   class=" py-5 bg-light" *ngIf="individualCustomers!">
+      <div class="row py-lg-3"  >
         <div class="col"><label  for="">SearchLastName</label><input type="text" class="form-control form-control-lg" [(ngModel)]="searchLastName" /></div>
         <div class="col"><label  for="">SearchFirtName</label><input type="text" class="form-control form-control-lg" [(ngModel)]="searchFirtName" /></div>
         <div class="col"><label  for="">SearchNationalIdentity</label><input type="number" class="form-control form-control-lg" [(ngModel)]="searchId" /></div>
