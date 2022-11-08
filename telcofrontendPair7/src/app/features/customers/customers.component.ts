@@ -28,7 +28,7 @@ export class CustomersComponent implements OnInit {
   searchId!:number
 
   
-  CustomersType!:boolean;
+  CustomersType!:string;
 
   constructor(private customersService: CustomersService , private router:Router) {}
 
@@ -43,19 +43,20 @@ export class CustomersComponent implements OnInit {
   }
   //individualCustomers
   getByIndividualCustomers(): void {
-    this.CustomersType=false;
+   
       this.customersService.getIndividualCustomers().subscribe((response) => {
       this.individualCustomers = response;
+      this.CustomersType="type1";
    
     });
   }
   //corporateCustomers
   getByCorporateCustomers(): void {
-    this.CustomersType=true;
+ 
     this.customersService.getCorporateCustomers().subscribe((response) => {
       this.corporateCustomers = response;
+      this.CustomersType="type2";
  
-  
     });
   }
   
