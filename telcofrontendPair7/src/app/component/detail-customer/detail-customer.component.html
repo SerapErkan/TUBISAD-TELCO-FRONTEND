@@ -9,6 +9,9 @@
         <p class="col-md-8 fs-4">Last Name:{{ p.lastName }}</p>
         <p class="col-md-8 fs-4">National Identity:{{ p.nationalIdentity }}</p>
       </div>
+      <div *ngFor="let p of serviceCustomerDetail">
+        <p>{{p.name}}</p>
+      </div>
       <button class="btn btn-primary btn-lg" type="button">
         Start New Order
       </button>
@@ -23,6 +26,11 @@
         <p class="col-md-8 fs-4">CustomerId:{{ p.customerId}}</p>
         <p class="col-md-8 fs-4">CompanyName:{{ p.companyName }}</p>
         <p class="col-md-8 fs-4">TaxNumber:{{ p.taxNumber }}</p>
+
+      </div>
+
+      <div *ngFor="let p of serviceCustomerDetail">
+        <p>{{p.name}}</p>
       </div>
       <button class="btn btn-primary btn-lg" type="button">
         Start New Order
@@ -31,4 +39,6 @@
   </div>
 
 </div>
+
+
 

@@ -13,8 +13,8 @@ const routes: Routes = [{
 {
   path: "createCustomer",
   component: CreateCustomerComponent,
-
 }
+
 // {
 //   path: "**",
 //   redirectTo: "/customers",

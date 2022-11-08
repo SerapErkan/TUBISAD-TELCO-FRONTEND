@@ -30,9 +30,7 @@ export class ServicesService {
     return this.httpClient.put<Service>( 'http://localhost:3000/services/' + id,  service );
   }
 
-  getServicesDetail(serviceId:number): Observable<Service[]>{
-    
-    return this.httpClient.get<Service[]>('http://localhost:3000/services/' + serviceId)
-
+  getServicesDetail(id:number): Observable<Service[]>{
+    return this.httpClient.get<Service[]>('http://localhost:3000/services/' +id)
     }
 }

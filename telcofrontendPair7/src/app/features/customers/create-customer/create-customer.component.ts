@@ -79,6 +79,8 @@ getService(){
     this.activeForm=false;
     }
   }
+
+
   // ----------------222
   // CorpCustomer(){
   //   this.indCustomerForm = false;
@@ -145,11 +147,13 @@ getService(){
     
     
    }
+
    saveCustomer(){
     console.log("denemmmeeee",this.corpCustomerSave);
     console.log("denemmmeeee2",{...this.corpCustomerSave});
     this.customerService.getCorporateCustomersDetail
     this.customerService.addCorporateCustomer(this.corpCustomerSave)
+    
    }
    
   
