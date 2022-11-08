@@ -18,7 +18,7 @@ export class DetailCustomerComponent implements OnInit {
   serviceCustomerDetail!:Service[];
   subscriptionsCustomerDetail!:Sub[];
   serviceId!:number[];
-  serviceNameDetail!:Service[];
+  serviceNameDetail:Service[]=[];
   customerType!: boolean;
   error!:string;
   
@@ -32,6 +32,7 @@ export class DetailCustomerComponent implements OnInit {
   ngOnInit(): void {
 
     this.customerId = Number(this.route.snapshot.paramMap.get('id'));
+
     if (this.customerId % 2 === 0) {
       this.customerType = false
     } if (this.customerId % 2 === 1) {
@@ -42,6 +43,8 @@ export class DetailCustomerComponent implements OnInit {
     this.corporateCustomersSub()
     this.getCustomerSubs()
     this.getService()
+
+  
 
   }
 
@@ -113,25 +116,33 @@ getService(){
       this.error = err.statusText;
     },
     complete:()=>{
-        
+      this.getFilter();
       console.log(this.serviceId,"servisID")
       // 3 ve 6 servise baglan
-      console.log(this.serviceId[0],this.serviceId[1], "serıd");
-       console.log(this.serviceCustomerDetail,"bak")
+       }      
        
-       this.servicesService.getServicesDetail(3).subscribe((res)=>
-       this.serviceNameDetail=res
-      
-       )
-
-       console.log(this.serviceNameDetail,"name");
-       console.log(this.serviceId[0],"servisID=0")
-
-         }       
+       
   }
   )
-  
+     
   };
+
+
+getFilter(){
+
+this.servicesService.getServices().subscribe((res)=>
+{
+  this.serviceCustomerDetail=res.filter(f=> this.serviceId.includes(f.id??0))
+  console.log(this.serviceCustomerDetail,"ss");
+
+}
+)
+
+}
+
+
+
+
 
   }
 
