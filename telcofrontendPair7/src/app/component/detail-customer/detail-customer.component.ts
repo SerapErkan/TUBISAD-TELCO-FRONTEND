@@ -115,7 +115,18 @@ getService(){
     complete:()=>{
         
       console.log(this.serviceId,"servisID")
-      // 3 ve 6 servise baglan 
+      // 3 ve 6 servise baglan
+      console.log(this.serviceId[0],this.serviceId[1], "serıd");
+       console.log(this.serviceCustomerDetail,"bak")
+       
+       this.servicesService.getServicesDetail(3).subscribe((res)=>
+       this.serviceNameDetail=res
+      
+       )
+
+       console.log(this.serviceNameDetail,"name");
+       console.log(this.serviceId[0],"servisID=0")
+
          }       
   }
   )
