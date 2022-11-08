@@ -1,0 +1,93 @@
+<article>
+<br>
+<br>
+
+
+<div class="row">
+  <div class="col"></div>
+  <div class="col align-self-end">
+<igx-radio value="option1"  (click)="typeSelection(true)" >individualCustomers</igx-radio>
+<br>
+<igx-radio value="option2" (click)="typeSelection(false)">corporateCustomers</igx-radio>
+  </div>
+</div>
+
+<!-- 1customer -->
+  <div  *ngIf="activeForm" class="row align-items-center">
+    <div class="col"></div>
+    <div class="col">
+      <form [formGroup]="createIndividualCustomer">
+        <igx-input-group>
+          <input igxInput id="customerId"  type="text" formControlName="customerId" />
+          <label igxLabel for="customerId">CustemerID</label>
+        </igx-input-group>
+
+        <igx-input-group>
+          <input igxInput id="firstName" type="text" formControlName="firstName"/>
+          <label igxLabel for="firstName">FirstName</label>
+        </igx-input-group>
+
+        <igx-input-group>
+          <input igxInput id="lastName" type="text" formControlName="lastName" />
+          <label igxLabel for="lastName">lastName</label>
+        </igx-input-group>
+
+        <igx-input-group>
+          <input igxInput id="nationalIdentity" type="text" formControlName="nationalIdentity" />
+          <label igxLabel for="nationalIdentity" >NationalIdentity</label>
+        </igx-input-group>
+
+        <div class="date-picker-wrapper">
+          <igx-date-picker id="birthDate"  formControlName="birthDate"  >
+            <label igxLabel>Date</label>
+          </igx-date-picker>
+        </div>
+        
+      </form>
+    </div>
+    <div class="col"></div>
+  </div>
+<!--2customer -->
+
+<div *ngIf="!activeForm" class="row align-items-center">
+  <div class="col"></div>
+  <div class="col">
+    <form [formGroup]="createCorporateCustomer">
+
+      <igx-input-group>
+        <input igxInput id="customerId" type="text" formControlName="customerId"/>
+        <label igxLabel for="fullName">Custemer ID  </label>
+      </igx-input-group>
+
+      <igx-input-group>
+        <input igxInput id="companyName" type="text" formControlName="companyName" />
+        <label igxLabel for="companyName">Company Name</label>
+      </igx-input-group>
+
+      <igx-input-group>
+        <input igxInput id="taxNumber"  type="text" formControlName="taxNumber" />
+        <label igxLabel for="taxNumber">Tax Number</label>
+      </igx-input-group>
+
+      <div class="row">
+        <div class="col"></div>
+        <div class="col"></div>
+      <div class="col align-self-end">
+        <br>
+        <button  type="submit" igxButton="outlined" igxRipple>Outlined</button>
+      </div>
+      </div>
+      
+    </form>
+  </div>
+  <div class="col"></div>
+</div>
+<!-- servise -->
+
+<div *ngFor="let p of services">
+  <igx-radio >
+    {{p.name}}
+  </igx-radio> 
+</div>
+
+</article>
