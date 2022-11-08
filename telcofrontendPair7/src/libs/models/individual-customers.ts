@@ -1,7 +1,7 @@
 import { Customer } from "./customer"
 
 export interface IndividualCustomers  extends Customer{
-    customerId?:number;
+    customerId:number;
     firstName?:string;
     lastName?:string;
     nationalIdentity?:number;

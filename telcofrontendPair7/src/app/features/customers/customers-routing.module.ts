@@ -14,13 +14,12 @@ const routes: Routes = [{
   path: "createCustomer",
   component: CreateCustomerComponent,
 
-},
-{
-  path: "**",
-  redirectTo: "/customers",
-  pathMatch: "full"
 }
-
+// {
+//   path: "**",
+//   redirectTo: "/customers",
+//   pathMatch: "full"
+// }
 
 ];
 
@@ -29,3 +28,5 @@ const routes: Routes = [{
   exports: [RouterModule]
 })
 export class CustomersRoutingModule { }
+
+

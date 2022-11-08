@@ -18,9 +18,7 @@ export class DetailCustomerComponent implements OnInit {
   serviceCustomerDetail!:Service[];
   subscriptionsCustomerDetail!:Sub[];
   serviceId!:number[];
-
-
-
+  serviceNameDetail!:Service[];
   customerType!: boolean;
   error!:string;
   
@@ -116,10 +114,12 @@ getService(){
     },
     complete:()=>{
         
-    }
+      console.log(this.serviceId,"servisID")
+      // 3 ve 6 servise baglan 
+         }       
   }
   )
-    
+  
   };
 
   }
@@ -133,7 +133,6 @@ getService(){
   //     } )
   //   });
 // }
-
 // this.servicesService.getServicesDetail().subscribe({
 //   next:(res)=>{
 //   this.serviceCustomerDetail=res;

@@ -59,10 +59,11 @@ export class CustomersComponent implements OnInit {
     });
   }
   
-  showDetails(id:number|undefined){
+  showDetails(id:number | undefined){
     //queryParams--sor
     // this.router.navigate(['customers/details'],{queryParams: {customerId:id}})
-    this.router.navigate(['/customers/details',id])
+    this.router.navigate(['customers/details',id]);
+    console.log(id);
     
   }
 
