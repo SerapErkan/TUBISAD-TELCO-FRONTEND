@@ -13,7 +13,6 @@ export const environment = {
 
       services: 'http://localhost:3000/services',
       users: 'http://localhost:3000/users',
-      
       auth: "http://localhost:3000/auth/login",
 
       customers: {

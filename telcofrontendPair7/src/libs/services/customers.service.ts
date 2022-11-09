@@ -1,12 +1,14 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Observable, Subscription  } from 'rxjs'
+import {Observable } from 'rxjs'
 import { environment } from 'src/environments/environment';
 import { CorporateCustomers } from '../models/corporate-customers';
 import { Customer } from '../models/customer';
 import { IndividualCustomers } from '../models/individual-customers';
-import { Sub } from '../models/sub';
+import { Invoice } from '../models/invoice';
+import { Subscription } from '../models/subscription';
+
 
 
 @Injectable({
@@ -46,17 +48,43 @@ connections=environment.api
 
 
 //subscriptions
-  getsubscriptions():Observable<Sub[]>{
-    return this.http.get<Sub[]>(this.connections.Url.customers.subscription)
+  getsubscriptions():Observable<Subscription[]>{
+    return this.http.get<Subscription[]>(this.connections.Url.customers.subscription)
   }
-  getsubscriptionsDetail(id:number):Observable<Sub[]>{
-    return this.http.get<Sub[]>('http://localhost:3000/subscriptions?customerId'+id)
+  getsubscriptionsDetail(id:number):Observable<Subscription[]>{
+    return this.http.get<Subscription[]>('http://localhost:3000/subscriptions?customerId'+id)
   }
 
 
-  addCorporateCustomer(customer : CorporateCustomers[]):Observable<CorporateCustomers[]>{
-    return this.http.post<CorporateCustomers[]>('http://localhost:3000/corporateCustomers', customer)
+  addCorporateCustomer(customer : CorporateCustomers):Observable<CorporateCustomers>{
+    return this.http.post<CorporateCustomers>('http://localhost:3000/corporateCustomers', customer)
   }
+
+  addIndividualCustomer(customer : IndividualCustomers):Observable<IndividualCustomers>{
+    return this.http.post<IndividualCustomers>('http://localhost:3000/individualCustomers', customer)
+  }
+
+  addCustomer(customer : Customer):Observable<Customer>{
+    return this.http.post<Customer>('http://localhost:3000/customers', customer)
+  }
+
+  addSubscriptions(id: number, serviceId : number | undefined):Observable<Subscription>{
+    const data = { customerId: id ,serviceId: serviceId , dateStarted: new Date() }
+    
+    return this.http.post<Subscription>('http://localhost:3000/subscriptions', data)
+  }
+
+  addInvoices(id: number ):Observable<Invoice>{
+
+    let date = new Date()
+
+    const data = { subscriptionId: id , dateCreated: new Date(), dateDue: date.setFullYear(date.getFullYear() + 1)}
+
+    return this.http.post<Invoice>('http://localhost:3000/invoices', data)
+  }
+
+  
+
 
 
 

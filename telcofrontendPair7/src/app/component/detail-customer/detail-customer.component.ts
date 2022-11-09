@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CustomersService, Service, ServicesService, Sub } from 'src/libs';
+import { CustomersService, Service, ServicesService, Subscription } from 'src/libs';
 import { CorporateCustomers } from 'src/libs/models/corporate-customers';
 import { IndividualCustomers } from 'src/libs/models/individual-customers';
 
@@ -16,7 +16,7 @@ export class DetailCustomerComponent implements OnInit {
   individualCustomersDetail!: IndividualCustomers[];
   corporateCustomersDetail !: CorporateCustomers[];
   serviceCustomerDetail!:Service[];
-  subscriptionsCustomerDetail!:Sub[];
+  subscriptionsCustomerDetail!:Subscription[];
   serviceId!:number[];
   serviceNameDetail:Service[]=[];
   customerType!: boolean;
@@ -141,9 +141,6 @@ this.servicesService.getServices().subscribe((res)=>
 }
 
 
-
-
-
   }
 
 
@@ -154,17 +151,4 @@ this.servicesService.getServices().subscribe((res)=>
   //   console.log(response);
   //     } )
   //   });
-// }
-// this.servicesService.getServicesDetail().subscribe({
-//   next:(res)=>{
-//   this.serviceCustomerDetail=res;
-//   },
-//   error:()=>{
-
-//   },
-//   complete() {
-//     console.log()
-//   },
-// })
-
 // }

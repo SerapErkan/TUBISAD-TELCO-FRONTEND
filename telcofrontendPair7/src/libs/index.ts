@@ -10,7 +10,10 @@ export *from "./models/login-response"
 
 export * from "./models/users"
 export *from "./models/service"
-export * from "./models/sub"
+export * from "./models/subscription"
+export *from "./models/invoice"
+export *from"./models/individual-customers"
+export *from "./models/corporate-customers"
 
 //services
 export * from "./services/auth.service"
