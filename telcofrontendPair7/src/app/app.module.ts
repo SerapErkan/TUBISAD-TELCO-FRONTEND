@@ -62,7 +62,7 @@ import { environment } from 'src/environments/environment';
         closeButton:false,
         progressAnimation:"decreasing",
         preventDuplicates:true,
-        positionClass:"toast-bottom-left"
+        positionClass:"toast-bottom-right"
       }),
       // ToastrModule added
       //STORE
